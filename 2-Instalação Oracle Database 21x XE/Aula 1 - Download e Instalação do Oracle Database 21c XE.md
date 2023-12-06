@@ -1,12 +1,6 @@
---
--- Curso - Oracle PL/SQL Especialista: do Básico ao Avançado
---
--- Autor - Emílio Scudero
---
 -- Seção 02 - PL/SQL Fundamentos - Instalação do Oracle Database 21c XE
---
+
 -- Aula 1 - Download e Instalação do Oracle Database 21c XE
---
 
 -- Download e Instalação do Oracle Database 21c XE
 
