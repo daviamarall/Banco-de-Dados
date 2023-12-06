@@ -1,12 +1,4 @@
---
--- Curso - Oracle PL/SQL Especialista: do Básico ao Avançado
---
--- Autor - Emílio Scudero
---
--- Seção 02 - PL/SQL Fundamentos - Instalação do Oracle Database 21c XE
---
 -- Aula 2 - Configurando o LISTENER e o TNSNAMES - Criando e Testando uma Conexão Local
---
 
 -- Configurando o LISTENER e o TNSNAMES - Criando e Testando uma Conexão Local
 
