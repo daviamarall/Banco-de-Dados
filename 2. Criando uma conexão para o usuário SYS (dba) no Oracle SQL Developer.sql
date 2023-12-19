@@ -1,4 +1,4 @@
-**-- Criando uma conexão para o usuário SYS (dba) no Oracle SQL Developer**
+-- Criando uma conexão para o usuário SYS (dba) no Oracle SQL Developer
 
 1. Criando uma conexão para o usuário SYS (dba) no Oracle SQL Developer
 
