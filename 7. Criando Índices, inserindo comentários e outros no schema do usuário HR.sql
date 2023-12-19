@@ -1,5 +1,3 @@
-
-
 -- Criando Índices, inserindo comentários e outros no schema do usuário HR
 
 /*
