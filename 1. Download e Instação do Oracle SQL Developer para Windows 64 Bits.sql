@@ -1,8 +1,3 @@
-
-
-**-- Aula 1 - Download e Instalação do Oracle SQL Developer**
-
-
 -- Download e Instação do Oracle SQL Developer para Windows 64 Bits
 
 1. Selecione o link: http://otn.oracle.com ou https://www.oracle.com/technical-resources
