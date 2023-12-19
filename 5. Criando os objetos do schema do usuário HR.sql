@@ -1,5 +1,4 @@
 
--- Aula 5 - Criando os objetos do schema do usuário HR
 
 -- Criando os objetos do schema do usuário HR
 
