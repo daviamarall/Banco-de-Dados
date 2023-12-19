@@ -1,4 +1,4 @@
-**-- Aula 6 - Populando os objetos do schema do usuário HR**
+-- Aula 6 - Populando os objetos do schema do usuário HR
 
 -- Populando os objetos do schema do usuário HR
 
