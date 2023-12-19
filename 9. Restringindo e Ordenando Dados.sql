@@ -1,8 +1,6 @@
 
 -- Restringindo e Ordenando Dados
 
-
-
 -- Utilizando a cláusula WHERE
 
 SELECT employee_id, last_name, job_id, department_id
