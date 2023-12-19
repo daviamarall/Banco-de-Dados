@@ -1,10 +1,4 @@
---
--- Curso - Oracle PL/SQL Especialista: do Básico ao Avançado
---
--- Autor - Emílio Scudero
---
--- Seção 03 - PL/SQL Fundamentos - Instalação e Configuração das conexões no Oracle SQL Developer
---
+
 -- Aula 7 - Criando Índices, inserindo comentários e outros no schema do usuário HR
 
 -- Criando Índices, inserindo comentários e outros no schema do usuário HR
