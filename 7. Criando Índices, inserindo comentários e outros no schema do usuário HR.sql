@@ -1,5 +1,4 @@
 
--- Aula 7 - Criando Índices, inserindo comentários e outros no schema do usuário HR
 
 -- Criando Índices, inserindo comentários e outros no schema do usuário HR
 
