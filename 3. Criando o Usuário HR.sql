@@ -1,26 +1,29 @@
--- Aula 3 - Criando o Usuário HR
+Claro, aqui está o seu script formatado como um arquivo Markdown:
 
--- Criando o Usuário HR
+```markdown
+# Aula 3 - Criando o Usuário HR
 
-/*
- No Oracle SQL Developer conecte-se como usuário SYS utilizando a sua conexão para o usuário SYS
- Abra este script no Oracle SQL Developer e execute (F5)
-/*
+## Criando o Usuário HR
 
-/*
-  Configura a sessão para o pluggable database XEPDB1
-*/
+```sql
+-- No Oracle SQL Developer conecte-se como usuário SYS utilizando a sua conexão para o usuário SYS
+-- Abra este script no Oracle SQL Developer e execute (F5)
+```
+
+```sql
+-- Configura a sessão para o pluggable database XEPDB1
 
 ALTER SESSION SET CONTAINER = XEPDB1;
+```
 
-/*
-  Remove a conta do usuário HR e remove todos os seus objetos em cascata
-*/
+```sql
+-- Remove a conta do usuário HR e remove todos os seus objetos em cascata
+
 DROP USER HR CASCADE;
+```
 
-/*
-  Cria a conta do usuário HR com a senha hr e concede os privilégios
-*/
+```sql
+-- Cria a conta do usuário HR com a senha hr e concede os privilégios
 
 CREATE USER HR 
 IDENTIFIED BY hr
@@ -33,3 +36,5 @@ GRANT CONNECT, RESOURCE TO HR;
 
 GRANT CREATE SESSION, CREATE VIEW, CREATE TABLE, ALTER SESSION, CREATE SEQUENCE, CREATE PROCEDURE, CREATE TRIGGER TO HR;
 GRANT CREATE SYNONYM, CREATE DATABASE LINK, UNLIMITED TABLESPACE TO HR;
+```
+```
