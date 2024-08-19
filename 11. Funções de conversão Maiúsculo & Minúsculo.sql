@@ -1,3 +1,5 @@
+-- Utilizando Funções de Conversão e Expressões Condicionais 
+
 -- Utilizando a Função TO_CHAR com Datas
 
 SELECT last_name,TO_CHAR(hire_date, 'DD/MM/YYYY  HH24:MI:SS') DT_ADMISSÂO
