@@ -1,0 +1,1 @@
+https://docs.microsoft.com/pt-br/sql/samples/sql-samples-where-are?view=sql-server-ver15

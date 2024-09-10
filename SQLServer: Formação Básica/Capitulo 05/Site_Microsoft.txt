@@ -1,0 +1,1 @@
+https://docs.microsoft.com/pt-br/sql/t-sql/language-reference?view=sql-server-ver15
