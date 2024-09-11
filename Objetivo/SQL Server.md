@@ -130,7 +130,7 @@ WHERE Preco > 1000;
 SELECT * FROM vw_produtos_caro;
 ```
 
----
+
 
 ### **Módulo 9: Funções Definidas pelo Usuário**
 
@@ -153,9 +153,9 @@ SELECT Nome, dbo.fn_calcular_desconto(Preco, 10) AS PrecoComDesconto
 FROM Produtos;
 ```
 
----
 
-### **Módulo 10: Procedures (Procedures Armazenadas)**
+
+### **10. Procedures (Procedures Armazenadas)**
 
 #### **Descrição:**
 Procedures armazenadas são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
@@ -178,9 +178,9 @@ END;
 EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 ```
 
----
 
-### **Módulo 11: Triggers**
+
+### ** 11. Triggers**
 
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos, como `INSERT`, `UPDATE` ou `DELETE`, em uma tabela.
@@ -198,9 +198,9 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 12: Transações**
+
+### ** 12. Transações**
 
 #### **Descrição:**
 As transações garantem que um conjunto de operações SQL sejam executadas com sucesso ou, em caso de falha, todas sejam revertidas. Elas garantem consistência e integridade dos dados.
@@ -221,7 +221,7 @@ ELSE
 
 ---
 
-### **Módulo 13: Controle de Erros**
+### ** 13. Controle de Erros**
 
 #### **Descrição:**
 No SQL Server, é possível capturar e lidar com erros usando `TRY...CATCH`. Isso permite tratar falhas e garantir a integridade dos dados.
@@ -240,12 +240,12 @@ END CATCH;
 
 ---
 
-### **Módulo 14: Otimização de Consultas**
+### ** 14. Otimização de Consultas**
 
 #### **Descrição:**
 A otimização de consultas é fundamental para garantir a eficiência do banco de dados. Técnicas como o uso adequado de índices, views, e análise de planos de execução ajudam a melhorar a performance.
 
-#### **Exemplo 20: Exibindo o Plano de Execução**
+#### **Exemplo: Exibindo o Plano de Execução**
 ```sql
 SET SHOWPLAN_ALL ON;
 GO
@@ -257,16 +257,15 @@ SET SHOWPLAN_ALL OFF;
 ---
 
 
----
 
 ## **Oracle PL/SQL**
 
-### **Módulo 1: Introdução ao PL/SQL**
+### ** 1: Introdução ao PL/SQL**
 
 #### **Descrição:**
 PL/SQL (Procedural Language/SQL) é a extensão procedural da linguagem SQL, usada em bancos de dados Oracle. Ele permite combinar comandos SQL com lógica de programação, como loops e condicionais, para criar blocos de código reutilizáveis.
 
-#### **Exemplo 1: Bloco PL/SQL Simples**
+#### **Exemplo: Bloco PL/SQL Simples**
 ```sql
 DECLARE
     v_nome VARCHAR2(50);
@@ -276,14 +275,13 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 2: Variáveis e Tipos de Dados**
+### ** 2: Variáveis e Tipos de Dados**
 
 #### **Descrição:**
 Em PL/SQL, as variáveis são usadas para armazenar dados temporários. Elas devem ser declaradas na seção de declaração do bloco PL/SQL e podem ser de vários tipos: numéricos, caracteres, datas, entre outros.
 
-#### **Exemplo 2: Declaração de Variáveis**
+#### **Exemplo: Declaração de Variáveis**
 ```sql
 DECLARE
     v_idade NUMBER := 25;
@@ -293,14 +291,15 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 3: Estruturas de Controle**
+### ** 3: Estruturas de Controle**
 
 #### **Descrição:**
 PL/SQL permite usar estruturas de controle como `IF`, `LOOP`, `WHILE` e `FOR`. Essas estruturas são usadas para controlar o fluxo de execução do código.
 
-#### **Exemplo 3: Estrutura IF-THEN-ELSE**
+#### ** 3: Estrutura IF-THEN-ELSE**
+
+**Exemplo:**
 ```sql
 DECLARE
     v_idade NUMBER := 18;
@@ -313,7 +312,7 @@ BEGIN
 END;
 ```
 
-#### **Exemplo 4: Loop FOR**
+#### ** 4: Loop FOR**
 ```sql
 BEGIN
     FOR i IN 1..5 LOOP
@@ -322,14 +321,13 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 4: Cursores**
+### ** 5: Cursores**
 
 #### **Descrição:**
 Cursores em PL/SQL permitem percorrer um conjunto de resultados linha por linha. Um cursor pode ser implícito (automático) ou explícito (declarado pelo usuário).
 
-#### **Exemplo 5: Cursor Explícito**
+#### **Exemplo: Cursor Explícito**
 ```sql
 DECLARE
     CURSOR c_empregados IS
@@ -346,9 +344,8 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 5: Funções (Functions)**
+### ** 6: Funções (Functions)**
 
 #### **Descrição:**
 Funções em PL/SQL são blocos de código que retornam um valor. Elas podem ser usadas em consultas SQL e outras operações.
@@ -364,14 +361,13 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 6: Procedures (Procedures Armazenadas)**
+### ** 7: Procedures (Procedures Armazenadas)**
 
 #### **Descrição:**
 Procedures são blocos de código que podem executar uma tarefa sem retornar um valor diretamente, embora possam usar parâmetros para enviar ou receber dados.
 
-#### **Exemplo 7: Criando uma Procedure**
+#### **Exemplo: Criando uma Procedure**
 ```sql
 CREATE OR REPLACE PROCEDURE atualizar_salario(p_id NUMBER, p_novo_salario NUMBER) IS
 BEGIN
@@ -382,14 +378,13 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 7: Pacotes (Packages)**
+### ** 8: Pacotes (Packages)**
 
 #### **Descrição:**
 Pacotes são agrupamentos de funções, procedures e outras definições em uma única unidade lógica. Eles ajudam a organizar e encapsular o código.
 
-#### **Exemplo 8: Criando um Pacote**
+#### **Exemplo: Criando um Pacote**
 ```sql
 -- Especificação do Pacote
 CREATE OR REPLACE PACKAGE pacote_gerenciamento_empregados IS
@@ -415,14 +410,14 @@ CREATE OR REPLACE PACKAGE BODY pacote_gerenciamento_empregados IS
 END pacote_gerenciamento_empregados;
 ```
 
----
 
-### **Módulo 8: Triggers**
+
+### ** 9: Triggers**
 
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos específicos no banco de dados, como `INSERT`, `UPDATE` ou `DELETE`.
 
-#### **Exemplo 9: Criando um Trigger**
+#### **Exemplo: Criando um Trigger**
 ```sql
 CREATE OR REPLACE TRIGGER trg_auditoria_empregados
 BEFORE INSERT ON empregados
@@ -432,14 +427,14 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 9: Jobs (Agendamento de Tarefas)**
+
+### ** 10. Jobs (Agendamento de Tarefas)**
 
 #### **Descrição:**
 Jobs são tarefas agendadas que podem ser configuradas para serem executadas automaticamente em intervalos definidos. Usando o pacote `DBMS_SCHEDULER`, podemos criar, gerenciar e monitorar jobs.
 
-#### **Exemplo 10: Criando um Job**
+#### **Exemplo: Criando um Job**
 ```sql
 BEGIN
     DBMS_SCHEDULER.create_job (
@@ -453,9 +448,9 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 10: Índices (Indexes)**
+
+### ** 11. Índices (Indexes)**
 
 #### **Descrição:**
 Índices são estruturas de dados usadas para melhorar a performance das consultas. Existem vários tipos de índices, como B-tree e Bitmap, cada um com suas características e usos específicos.
@@ -466,14 +461,14 @@ CREATE INDEX idx_nome_empregados
 ON empregados (nome);
 ```
 
----
 
-### **Módulo 11: Exceções (Tratamento de Erros)**
+
+### ** 12. Exceções (Tratamento de Erros)**
 
 #### **Descrição:**
 Em PL/SQL, podemos capturar e tratar erros usando blocos de exceção. Isso permite lidar com situações inesperadas, como divisão por zero ou consultas sem resultados.
 
-#### **Exemplo 12: Tratamento de Exceção**
+#### **Exemplo: Tratamento de Exceção**
 ```sql
 BEGIN
     DECLARE
@@ -487,14 +482,14 @@ BEGIN
 END;
 ```
 
----
 
-### **Módulo 12: Otimização e Boas Práticas em PL/SQL**
+
+### ** 13. Otimização e Boas Práticas em PL/SQL**
 
 #### **Descrição:**
 PL/SQL oferece várias maneiras de otimizar código para performance. Boas práticas incluem o uso de `BULK COLLECT` para grandes volumes de dados e o uso cuidadoso de cursores e loops.
 
-#### **Exemplo 13: Uso de BULK COLLECT**
+#### **Exemplo: Uso de BULK COLLECT**
 ```sql
 DECLARE
     TYPE t_empregados IS TABLE OF empregados%ROWTYPE;
@@ -507,6 +502,4 @@ BEGIN
 END;
 ```
 
----
 
-Este curso cobre os principais conceitos de PL/SQL, com exemplos simples e práticos, fornecendo uma base sólida para trabalhar com desenvolvimento em Oracle.
