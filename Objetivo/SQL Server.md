@@ -2,7 +2,7 @@
 
 Este documento cobre os principais conceitos para se trabalhar com SQL Server, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
 
-### **Módulo 1: Introdução ao SQL Server e T-SQL**
+### 1. Introdução ao SQL Server e T-SQL**
 
 #### **Descrição:**
 O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvolvido pela Microsoft. T-SQL (Transact-SQL) é a extensão da linguagem SQL usada no SQL Server, que inclui funções adicionais para controle de fluxo, variáveis e muito mais.
@@ -12,7 +12,7 @@ O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvo
 SELECT * FROM Clientes;
 ```
 
-### **Módulo 2: Criação de Tabelas e Tipos de Dados**
+### 2. Criação de Tabelas e Tipos de Dados**
 
 #### **Descrição:**
 No SQL Server, as tabelas armazenam dados em linhas e colunas. Cada coluna tem um tipo de dado, como `INT`, `VARCHAR`, `DATE`, entre outros.
@@ -26,7 +26,7 @@ CREATE TABLE Produtos (
     DataCadastro DATE
 );
 ```
-### **Módulo: Inserção, Atualização e Exclusão de Dados**
+### 3. Inserção, Atualização e Exclusão de Dados**
 
 #### **Descrição:**
 No SQL Server, você pode inserir, atualizar e excluir dados usando os comandos `INSERT`, `UPDATE` e `DELETE`.
@@ -52,7 +52,7 @@ WHERE ProdutoID = 1;
 
 ---
 
-### **Módulo: Consultas Avançadas**
+### **4. Consultas Avançadas**
 
 #### **Descrição:**
 As consultas em T-SQL podem incluir cláusulas como `WHERE`, `JOIN`, `GROUP BY`, `ORDER BY`, entre outras, para obter resultados mais específicos e realizar junções entre tabelas.
@@ -74,7 +74,7 @@ INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
 
 ---
 
-### **Módulo 5: Funções de Agregação**
+### **5. Funções de Agregação**
 
 #### **Descrição:**
 As funções de agregação, como `SUM`, `AVG`, `COUNT`, `MAX` e `MIN`, são usadas para realizar cálculos em conjunto de dados.
@@ -85,9 +85,7 @@ SELECT AVG(Preco) AS PrecoMedio, MAX(Preco) AS PrecoMaximo, MIN(Preco) AS PrecoM
 FROM Produtos;
 ```
 
----
-
-### **Módulo 6: Subconsultas**
+### **6. Subconsultas**
 
 #### **Descrição:**
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
@@ -99,9 +97,7 @@ FROM Produtos
 WHERE Preco > (SELECT AVG(Preco) FROM Produtos);
 ```
 
----
-
-### **Módulo 7: Índices**
+### **7. Índices**
 
 #### **Descrição:**
 Índices são usados para melhorar a performance das consultas ao acelerar a recuperação dos dados. O SQL Server oferece índices `Clustered` e `Non-Clustered`.
@@ -112,9 +108,8 @@ CREATE INDEX idx_produtos_preco
 ON Produtos (Preco);
 ```
 
----
 
-### **Módulo 8: Views**
+### **8. Views**
 
 #### **Descrição:**
 Views são consultas salvas no banco de dados como objetos reutilizáveis. Elas podem ser usadas para simplificar o acesso a dados complexos ou para restringir o acesso a determinadas colunas.
