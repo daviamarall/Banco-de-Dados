@@ -12,8 +12,6 @@ O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvo
 SELECT * FROM Clientes;
 ```
 
----
-
 ### **Módulo 2: Criação de Tabelas e Tipos de Dados**
 
 #### **Descrição:**
@@ -28,9 +26,6 @@ CREATE TABLE Produtos (
     DataCadastro DATE
 );
 ```
-
----
-
 ### **Módulo: Inserção, Atualização e Exclusão de Dados**
 
 #### **Descrição:**
