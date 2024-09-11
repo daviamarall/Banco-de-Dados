@@ -196,7 +196,7 @@ END;
 
 
 
-### ** 12. Transações**
+### **12. Transações**
 
 #### **Descrição:**
 As transações garantem que um conjunto de operações SQL sejam executadas com sucesso ou, em caso de falha, todas sejam revertidas. Elas garantem consistência e integridade dos dados.
@@ -216,7 +216,7 @@ ELSE
 ```
 
 
-### ** 13. Controle de Erros**
+### **13. Controle de Erros**
 
 #### **Descrição:**
 No SQL Server, é possível capturar e lidar com erros usando `TRY...CATCH`. Isso permite tratar falhas e garantir a integridade dos dados.
@@ -233,7 +233,7 @@ BEGIN CATCH
 END CATCH;
 ```
 
-### ** 14. Otimização de Consultas**
+### **14. Otimização de Consultas**
 
 #### **Descrição:**
 A otimização de consultas é fundamental para garantir a eficiência do banco de dados. Técnicas como o uso adequado de índices, views, e análise de planos de execução ajudam a melhorar a performance.
@@ -251,7 +251,7 @@ SET SHOWPLAN_ALL OFF;
 
 ## **Oracle PL/SQL**
 
-### ** 1: Introdução ao PL/SQL**
+### **1: Introdução ao PL/SQL**
 
 #### **Descrição:**
 PL/SQL (Procedural Language/SQL) é a extensão procedural da linguagem SQL, usada em bancos de dados Oracle. Ele permite combinar comandos SQL com lógica de programação, como loops e condicionais, para criar blocos de código reutilizáveis.
@@ -267,7 +267,7 @@ END;
 ```
 
 
-### ** 2: Variáveis e Tipos de Dados**
+### **2: Variáveis e Tipos de Dados**
 
 #### **Descrição:**
 Em PL/SQL, as variáveis são usadas para armazenar dados temporários. Elas devem ser declaradas na seção de declaração do bloco PL/SQL e podem ser de vários tipos: numéricos, caracteres, datas, entre outros.
@@ -283,12 +283,12 @@ END;
 ```
 
 
-### ** 3: Estruturas de Controle**
+### **3: Estruturas de Controle**
 
 #### **Descrição:**
 PL/SQL permite usar estruturas de controle como `IF`, `LOOP`, `WHILE` e `FOR`. Essas estruturas são usadas para controlar o fluxo de execução do código.
 
-#### ** 3: Estrutura IF-THEN-ELSE**
+#### **3: Estrutura IF-THEN-ELSE**
 
 **Exemplo:**
 ```sql
@@ -303,7 +303,7 @@ BEGIN
 END;
 ```
 
-#### ** 4: Loop FOR**
+#### **4: Loop FOR**
 ```sql
 BEGIN
     FOR i IN 1..5 LOOP
@@ -313,7 +313,7 @@ END;
 ```
 
 
-### ** 5: Cursores**
+### **5: Cursores**
 
 #### **Descrição:**
 Cursores em PL/SQL permitem percorrer um conjunto de resultados linha por linha. Um cursor pode ser implícito (automático) ou explícito (declarado pelo usuário).
@@ -336,7 +336,7 @@ END;
 ```
 
 
-### ** 6: Funções (Functions)**
+### **6: Funções (Functions)**
 
 #### **Descrição:**
 Funções em PL/SQL são blocos de código que retornam um valor. Elas podem ser usadas em consultas SQL e outras operações.
@@ -353,7 +353,7 @@ END;
 ```
 
 
-### ** 7: Procedures (Procedures Armazenadas)**
+### **7: Procedures (Procedures Armazenadas)**
 
 #### **Descrição:**
 Procedures são blocos de código que podem executar uma tarefa sem retornar um valor diretamente, embora possam usar parâmetros para enviar ou receber dados.
@@ -370,7 +370,7 @@ END;
 ```
 
 
-### ** 8: Pacotes (Packages)**
+### **8: Pacotes (Packages)**
 
 #### **Descrição:**
 Pacotes são agrupamentos de funções, procedures e outras definições em uma única unidade lógica. Eles ajudam a organizar e encapsular o código.
@@ -403,7 +403,7 @@ END pacote_gerenciamento_empregados;
 
 
 
-### ** 9: Triggers**
+### **9: Triggers**
 
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos específicos no banco de dados, como `INSERT`, `UPDATE` ou `DELETE`.
@@ -420,7 +420,7 @@ END;
 
 
 
-### ** 10. Jobs (Agendamento de Tarefas)**
+### **10. Jobs (Agendamento de Tarefas)**
 
 #### **Descrição:**
 Jobs são tarefas agendadas que podem ser configuradas para serem executadas automaticamente em intervalos definidos. Usando o pacote `DBMS_SCHEDULER`, podemos criar, gerenciar e monitorar jobs.
@@ -441,7 +441,7 @@ END;
 
 
 
-### ** 11. Índices (Indexes)**
+### **11. Índices (Indexes)**
 
 #### **Descrição:**
 Índices são estruturas de dados usadas para melhorar a performance das consultas. Existem vários tipos de índices, como B-tree e Bitmap, cada um com suas características e usos específicos.
@@ -454,7 +454,7 @@ ON empregados (nome);
 
 
 
-### ** 12. Exceções (Tratamento de Erros)**
+### **12. Exceções (Tratamento de Erros)**
 
 #### **Descrição:**
 Em PL/SQL, podemos capturar e tratar erros usando blocos de exceção. Isso permite lidar com situações inesperadas, como divisão por zero ou consultas sem resultados.
@@ -475,7 +475,7 @@ END;
 
 
 
-### ** 13. Otimização e Boas Práticas em PL/SQL**
+### **13. Otimização e Boas Práticas em PL/SQL**
 
 #### **Descrição:**
 PL/SQL oferece várias maneiras de otimizar código para performance. Boas práticas incluem o uso de `BULK COLLECT` para grandes volumes de dados e o uso cuidadoso de cursores e loops.
