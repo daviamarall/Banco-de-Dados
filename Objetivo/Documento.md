@@ -102,6 +102,12 @@ WHERE Preco > (SELECT AVG(Preco) FROM Produtos);
 
 #### **Exemplo: Criando um Índice**
 ```sql
+
+-- Cria um índice chamado idx_produtos_preco na tabela Produtos, baseado na coluna Preco
+
+CREATE INDEX idx_produtos_preco
+ON Produtos (Preco);
+
 CREATE INDEX idx_produtos_preco
 ON Produtos (Preco);
 ```
