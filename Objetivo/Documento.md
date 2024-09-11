@@ -176,7 +176,7 @@ EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 
 
 
-### ** 11. Triggers**
+### **11. Triggers**
 
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos, como `INSERT`, `UPDATE` ou `DELETE`, em uma tabela.
