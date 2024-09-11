@@ -52,8 +52,6 @@ DELETE FROM Produtos
 WHERE ProdutoID = 1;
 ```
 
----
-
 ### **4. Consultas Avançadas**
 
 #### **Descrição:**
@@ -73,8 +71,6 @@ FROM Clientes C
 INNER JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
 INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
 ```
-
-
 
 ### **5. Funções de Agregação**
 
@@ -237,8 +233,6 @@ BEGIN CATCH
 END CATCH;
 ```
 
----
-
 ### ** 14. Otimização de Consultas**
 
 #### **Descrição:**
@@ -254,7 +248,6 @@ SET SHOWPLAN_ALL OFF;
 ```
 
 ---
-
 
 ## **Oracle PL/SQL**
 
