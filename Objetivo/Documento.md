@@ -266,6 +266,18 @@ BEGIN
 END;
 ```
 
+`DECLARE`: Esta seção é usada para declarar variáveis ou tipos de dados que serão usados no bloco PL/SQL. No seu exemplo, v_nome é declarado como uma variável do tipo VARCHAR2(50).
+
+`BEGIN`: Aqui começa o bloco real de código PL/SQL. É onde a lógica principal do seu código é colocada.
+
+´v_nome := 'Maria';´ : Atribui o valor 'Maria' à variável v_nome.
+
+´DBMS_OUTPUT.PUT_LINE('Olá, ' || v_nome);´ : Esta linha imprime na saída padrão (normalmente usada em ambientes como o SQL*Plus ou SQL Developer) a mensagem 'Olá, ' seguida pelo valor da variável v_nome.
+
+´END;´ : Finaliza o bloco PL/SQL.
+
+Esse código é um exemplo básico para demonstrar como declarar variáveis e imprimir na saída no Oracle PL/SQL.
+
 
 ### **2: Variáveis e Tipos de Dados**
 
