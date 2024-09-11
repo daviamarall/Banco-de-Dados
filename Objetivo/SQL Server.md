@@ -4,8 +4,8 @@ Este documento cobre os principais conceitos para se trabalhar com SQL Server e 
 
 ## **SQL Server** ##
 
-### **1. Introdução ao SQL Server e T-SQL
-**
+### **1. Introdução ao SQL Server e T-SQL**
+
 #### **Descrição:**
 O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvolvido pela Microsoft. T-SQL (Transact-SQL) é a extensão da linguagem SQL usada no SQL Server, que inclui funções adicionais para controle de fluxo, variáveis e muito mais.
 
