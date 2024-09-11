@@ -74,7 +74,7 @@ INNER JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
 INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
 ```
 
----
+
 
 ### **5. Funções de Agregação**
 
@@ -219,7 +219,6 @@ ELSE
     COMMIT TRANSACTION;
 ```
 
----
 
 ### ** 13. Controle de Erros**
 
@@ -255,7 +254,6 @@ SET SHOWPLAN_ALL OFF;
 ```
 
 ---
-
 
 
 ## **Oracle PL/SQL**
