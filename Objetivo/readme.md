@@ -1,12 +1,13 @@
-
 ## **SQL Server**
+
+Este documento cobre os principais conceitos para se trabalhar com SQL Server, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
 
 ### **Módulo 1: Introdução ao SQL Server e T-SQL**
 
 #### **Descrição:**
 O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvolvido pela Microsoft. T-SQL (Transact-SQL) é a extensão da linguagem SQL usada no SQL Server, que inclui funções adicionais para controle de fluxo, variáveis e muito mais.
 
-#### **Exemplo 1: Consulta Básica em T-SQL**
+#### **Exemplo: Consulta Básica em T-SQL**
 ```sql
 SELECT * FROM Clientes;
 ```
@@ -18,7 +19,7 @@ SELECT * FROM Clientes;
 #### **Descrição:**
 No SQL Server, as tabelas armazenam dados em linhas e colunas. Cada coluna tem um tipo de dado, como `INT`, `VARCHAR`, `DATE`, entre outros.
 
-#### **Exemplo 2: Criando uma Tabela**
+#### **Exemplo: Criando uma Tabela**
 ```sql
 CREATE TABLE Produtos (
     ProdutoID INT PRIMARY KEY,
@@ -30,25 +31,25 @@ CREATE TABLE Produtos (
 
 ---
 
-### **Módulo 3: Inserção, Atualização e Exclusão de Dados**
+### **Módulo: Inserção, Atualização e Exclusão de Dados**
 
 #### **Descrição:**
 No SQL Server, você pode inserir, atualizar e excluir dados usando os comandos `INSERT`, `UPDATE` e `DELETE`.
 
-#### **Exemplo 3: Inserindo Dados**
+#### **Exemplo: Inserindo Dados**
 ```sql
 INSERT INTO Produtos (ProdutoID, Nome, Preco, DataCadastro)
 VALUES (1, 'Notebook', 3500.00, '2023-01-15');
 ```
 
-#### **Exemplo 4: Atualizando Dados**
+#### **Exemplo: Atualizando Dados**
 ```sql
 UPDATE Produtos
 SET Preco = 3200.00
 WHERE ProdutoID = 1;
 ```
 
-#### **Exemplo 5: Excluindo Dados**
+#### **Exemplo: Excluindo Dados**
 ```sql
 DELETE FROM Produtos
 WHERE ProdutoID = 1;
@@ -56,19 +57,19 @@ WHERE ProdutoID = 1;
 
 ---
 
-### **Módulo 4: Consultas Avançadas**
+### **Módulo: Consultas Avançadas**
 
 #### **Descrição:**
 As consultas em T-SQL podem incluir cláusulas como `WHERE`, `JOIN`, `GROUP BY`, `ORDER BY`, entre outras, para obter resultados mais específicos e realizar junções entre tabelas.
 
-#### **Exemplo 6: Consulta com Filtros**
+#### **Exemplo: Consulta com Filtros**
 ```sql
 SELECT Nome, Preco
 FROM Produtos
 WHERE Preco > 1000;
 ```
 
-#### **Exemplo 7: Join entre Tabelas**
+#### **Exemplo: Join entre Tabelas**
 ```sql
 SELECT C.Nome, P.Nome AS Produto, P.Preco
 FROM Clientes C
@@ -83,7 +84,7 @@ INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
 #### **Descrição:**
 As funções de agregação, como `SUM`, `AVG`, `COUNT`, `MAX` e `MIN`, são usadas para realizar cálculos em conjunto de dados.
 
-#### **Exemplo 8: Usando Funções de Agregação**
+#### **Exemplo: Usando Funções de Agregação**
 ```sql
 SELECT AVG(Preco) AS PrecoMedio, MAX(Preco) AS PrecoMaximo, MIN(Preco) AS PrecoMinimo
 FROM Produtos;
@@ -96,7 +97,7 @@ FROM Produtos;
 #### **Descrição:**
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
 
-#### **Exemplo 9: Subconsulta em Cláusula WHERE**
+#### **Exemplo: Subconsulta em Cláusula WHERE**
 ```sql
 SELECT Nome, Preco
 FROM Produtos
@@ -110,7 +111,7 @@ WHERE Preco > (SELECT AVG(Preco) FROM Produtos);
 #### **Descrição:**
 Índices são usados para melhorar a performance das consultas ao acelerar a recuperação dos dados. O SQL Server oferece índices `Clustered` e `Non-Clustered`.
 
-#### **Exemplo 10: Criando um Índice**
+#### **Exemplo: Criando um Índice**
 ```sql
 CREATE INDEX idx_produtos_preco
 ON Produtos (Preco);
@@ -123,7 +124,7 @@ ON Produtos (Preco);
 #### **Descrição:**
 Views são consultas salvas no banco de dados como objetos reutilizáveis. Elas podem ser usadas para simplificar o acesso a dados complexos ou para restringir o acesso a determinadas colunas.
 
-#### **Exemplo 11: Criando uma View**
+#### **Exemplo: Criando uma View**
 ```sql
 CREATE VIEW vw_produtos_caro
 AS
@@ -132,7 +133,7 @@ FROM Produtos
 WHERE Preco > 1000;
 ```
 
-#### **Exemplo 12: Consultando uma View**
+#### **Exemplo: Consultando uma View**
 ```sql
 SELECT * FROM vw_produtos_caro;
 ```
@@ -144,7 +145,7 @@ SELECT * FROM vw_produtos_caro;
 #### **Descrição:**
 Funções definidas pelo usuário podem ser criadas para encapsular lógica de negócios ou cálculos que serão reutilizados nas consultas.
 
-#### **Exemplo 13: Criando uma Função**
+#### **Exemplo: Criando uma Função**
 ```sql
 CREATE FUNCTION fn_calcular_desconto(@preco DECIMAL(10, 2), @desconto DECIMAL(5, 2))
 RETURNS DECIMAL(10, 2)
@@ -154,7 +155,7 @@ BEGIN
 END;
 ```
 
-#### **Exemplo 14: Usando a Função**
+#### **Exemplo: Usando a Função**
 ```sql
 SELECT Nome, dbo.fn_calcular_desconto(Preco, 10) AS PrecoComDesconto
 FROM Produtos;
@@ -167,7 +168,7 @@ FROM Produtos;
 #### **Descrição:**
 Procedures armazenadas são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
 
-#### **Exemplo 15: Criando uma Procedure**
+#### **Exemplo: Criando uma Procedure**
 ```sql
 CREATE PROCEDURE sp_atualizar_preco
     @produtoID INT,
@@ -180,7 +181,7 @@ BEGIN
 END;
 ```
 
-#### **Exemplo 16: Executando uma Procedure**
+#### **Exemplo: Executando uma Procedure**
 ```sql
 EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 ```
@@ -192,7 +193,7 @@ EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos, como `INSERT`, `UPDATE` ou `DELETE`, em uma tabela.
 
-#### **Exemplo 17: Criando um Trigger para Auditoria**
+#### **Exemplo: Criando um Trigger para Auditoria**
 ```sql
 CREATE TRIGGER trg_auditoria_produtos
 ON Produtos
@@ -212,7 +213,7 @@ END;
 #### **Descrição:**
 As transações garantem que um conjunto de operações SQL sejam executadas com sucesso ou, em caso de falha, todas sejam revertidas. Elas garantem consistência e integridade dos dados.
 
-#### **Exemplo 18: Usando Transações**
+#### **Exemplo: Usando Transações**
 ```sql
 BEGIN TRANSACTION;
 
@@ -233,7 +234,7 @@ ELSE
 #### **Descrição:**
 No SQL Server, é possível capturar e lidar com erros usando `TRY...CATCH`. Isso permite tratar falhas e garantir a integridade dos dados.
 
-#### **Exemplo 19: Tratamento de Erros com TRY...CATCH**
+#### **Exemplo: Tratamento de Erros com TRY...CATCH**
 ```sql
 BEGIN TRY
     UPDATE Produtos
@@ -263,7 +264,6 @@ SET SHOWPLAN_ALL OFF;
 
 ---
 
-Este curso cobre os principais conceitos e técnicas para trabalhar com SQL Server, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
 
 ---
 
