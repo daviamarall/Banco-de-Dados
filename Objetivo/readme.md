@@ -1,6 +1,3 @@
-#### Material sobre SQLServer e Oracle PL/SQL, criado com intuito de absorver conhecimento para que seja aplicado no nosso ambiente de trabalho. 
-
----
 
 ## **SQL Server**
 
