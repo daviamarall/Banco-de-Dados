@@ -1,6 +1,8 @@
-## **SQL Server**
+## **Objetivo Evertec 2024** ## 
 
-Este documento cobre os principais conceitos para se trabalhar com SQL Server, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
+Este documento cobre os principais conceitos para se trabalhar com SQL Server e Oracle PL/SQL, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
+
+## **SQL Server**
 
 ### 1. Introdução ao SQL Server e T-SQL**
 
