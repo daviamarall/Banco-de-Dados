@@ -52,21 +52,21 @@ DELETE FROM Produtos
 WHERE ProdutoID = 1;
 ```
 
-### **4. Consultas Avançadas**
+### **4. Consultas**
 
 #### **Descrição:**
 As consultas em T-SQL podem incluir cláusulas como `WHERE`, `JOIN`, `GROUP BY`, `ORDER BY`, entre outras, para obter resultados mais específicos e realizar junções entre tabelas.
 
 A cláusula **`WHERE`** é utilizada para filtrar os registros retornados por uma consulta SQL. Ela define uma condição que os dados devem atender para serem incluídos no resultado final da consulta. Apenas as linhas que correspondem aos critérios especificados na cláusula **`WHERE`** serão retornadas.
 
-### 1. **Sintaxe da Cláusula `WHERE`**:
+### **Sintaxe da Cláusula `WHERE`**:
 ```sql
 SELECT coluna1, coluna2, ...
 FROM tabela
 WHERE condição;
 ```
 
-### 2. **Exemplo Básico de `WHERE`**:
+### **Exemplo Básico de `WHERE`**:
 A consulta abaixo seleciona todos os produtos cujo preço é maior que 1000:
 ```sql
 SELECT Nome, Preco
@@ -75,10 +75,10 @@ WHERE Preco > 1000;
 ```
 - **Explicação**: Esta consulta retorna apenas os produtos cujo preço seja superior a 1000.
 
-### 3. **Operadores Comuns Usados com `WHERE`**:
+### **Operadores Comuns Usados com `WHERE`**:
 A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, como:
 
-#### **3.1. Operadores de Comparação**:
+#### **Operadores de Comparação**:
    - **`=`**: Igual a
    - **`!=` ou `<>`**: Diferente de
    - **`>`**: Maior que
@@ -94,7 +94,7 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna os produtos com preço igual ou superior a 500.
 
-#### **3.2. Operadores Lógicos**:
+#### **Operadores Lógicos**:
    - **`AND`**: Combina múltiplas condições. Todas as condições devem ser verdadeiras.
    - **`OR`**: Combina múltiplas condições. Pelo menos uma condição deve ser verdadeira.
    - **`NOT`**: Inverte o resultado de uma condição.
@@ -115,7 +115,7 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna produtos das categorias **Eletrônicos** ou **Móveis**.
 
-#### **3.3. Operador `IN`**:
+#### **Operador `IN`**:
    - **Descrição**: Verifica se o valor de uma coluna corresponde a qualquer valor de uma lista de valores especificados.
    
    **Exemplo**:
@@ -126,7 +126,7 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna produtos que pertencem às categorias **Eletrônicos** ou **Móveis**.
 
-#### **3.4. Operador `BETWEEN`**:
+#### **Operador `BETWEEN`**:
    - **Descrição**: Seleciona valores dentro de um intervalo especificado, incluindo os limites.
 
    **Exemplo**:
@@ -137,7 +137,7 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna produtos cujo preço esteja entre 500 e 1000.
 
-#### **3.5. Operador `LIKE`**:
+#### **Operador `LIKE`**:
    - **Descrição**: Utilizado para realizar comparações com padrões de string. Comumente usado com curingas:
      - **`%`**: Substitui zero ou mais caracteres.
      - **`_`**: Substitui exatamente um caractere.
@@ -150,7 +150,7 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna produtos cujo nome começa com a letra "S".
 
-#### **3.6. Operador `IS NULL`**:
+#### **Operador `IS NULL`**:
    - **Descrição**: Verifica se o valor de uma coluna é `NULL`.
 
    **Exemplo**:
@@ -196,10 +196,7 @@ HAVING COUNT(*) > 10;
 ```
 - **Explicação**: A cláusula **`HAVING`** filtra os grupos de categorias que têm mais de 10 produtos.
 
-
-Aqui está a explicação detalhada sobre as cláusulas **`GROUP BY`** e **`ORDER BY`**, complementando o uso de consultas avançadas em SQL:
-
-### 1. **GROUP BY**
+### **GROUP BY**
    - **Descrição**: A cláusula **`GROUP BY`** é usada para agrupar linhas que compartilham um valor em comum em uma ou mais colunas. Geralmente, é usada em conjunto com funções agregadas, como **`SUM()`**, **`COUNT()`**, **`AVG()`**, **`MAX()`** e **`MIN()`**, para realizar cálculos em cada grupo de dados.
    - **Sintaxe**:
      ```sql
@@ -219,7 +216,7 @@ Aqui está a explicação detalhada sobre as cláusulas **`GROUP BY`** e **`ORDE
 
    - **Observação**: Todas as colunas na cláusula `SELECT` que não fazem parte de uma função agregada devem aparecer na cláusula `GROUP BY`.
 
-### 2. **ORDER BY**
+### **ORDER BY**
    - **Descrição**: A cláusula **`ORDER BY`** é usada para ordenar os resultados de uma consulta com base em uma ou mais colunas. Por padrão, os resultados são ordenados em ordem crescente, mas você pode especificar explicitamente a ordem crescente ou decrescente.
    - **Sintaxe**:
      ```sql
@@ -264,12 +261,13 @@ FROM Pedidos
 GROUP BY ClienteID
 ORDER BY TotalVendas DESC;
 ```
-
 Neste caso, o **`GROUP BY`** agrupa as vendas por cliente, e o **`ORDER BY`** ordena os resultados em ordem decrescente de vendas.
+
+---
 
 Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas com base em uma condição relacionada. Existem diferentes tipos de JOINs, cada um com comportamentos distintos ao combinar os dados. Aqui estão os principais tipos de JOINs em SQL:
 
-### 1. **INNER JOIN**
+### **INNER JOIN**
    - **Descrição**: Retorna apenas as linhas que têm correspondências nas duas tabelas. Se não houver correspondência, a linha é excluída do resultado.
    - **Sintaxe**:
      ```sql
@@ -281,7 +279,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Esse exemplo combina dados de **Clientes**, **Pedidos**, e **Produtos**, mas só retorna os registros em que há uma correspondência nas três tabelas.
 
-### 2. **LEFT JOIN (ou LEFT OUTER JOIN)**
+### **LEFT JOIN (ou LEFT OUTER JOIN)**
    - **Descrição**: Retorna todas as linhas da tabela à esquerda (primeira tabela) e as linhas correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, serão retornados `NULLs` nos campos da tabela da direita.
    - **Sintaxe**:
      ```sql
@@ -293,7 +291,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Retorna todos os clientes, mesmo que eles não tenham feito pedidos. Se não houver pedido ou produto associado a um cliente, o SQL preenche as colunas de **Pedidos** e **Produtos** com valores `NULL`.
 
-### 3. **RIGHT JOIN (ou RIGHT OUTER JOIN)**
+### **RIGHT JOIN (ou RIGHT OUTER JOIN)**
    - **Descrição**: O comportamento é o oposto do **LEFT JOIN**. Retorna todas as linhas da tabela à direita (segunda tabela) e as linhas correspondentes da tabela à esquerda. Se não houver correspondência na tabela à esquerda, serão retornados `NULLs` nos campos da tabela da esquerda.
    - **Sintaxe**:
      ```sql
@@ -305,7 +303,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retornaria todos os produtos, mesmo que não estejam associados a nenhum pedido ou cliente. Se um produto não tiver sido encomendado, os campos da tabela **Clientes** e **Pedidos** serão preenchidos com `NULL`.
 
-### 4. **FULL JOIN (ou FULL OUTER JOIN)**
+### **FULL JOIN (ou FULL OUTER JOIN)**
    - **Descrição**: Retorna todas as linhas quando há uma correspondência em qualquer uma das tabelas. Se não houver correspondência em ambas as tabelas, as colunas da tabela correspondente que não tiver valores serão preenchidas com `NULL`.
    - **Sintaxe**:
      ```sql
@@ -317,7 +315,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retorna todos os clientes, todos os pedidos e todos os produtos, independentemente de haver ou não correspondências entre eles. Se não houver correspondência, os valores `NULL` serão usados para preencher as colunas ausentes.
 
-### 5. **CROSS JOIN**
+### **CROSS JOIN**
    - **Descrição**: Combina cada linha de uma tabela com todas as linhas de outra tabela, resultando em um produto cartesiano (todas as combinações possíveis). Não exige uma condição `ON`.
    - **Sintaxe**:
      ```sql
@@ -328,7 +326,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retorna todas as combinações possíveis de **Clientes** e **Produtos**. Por exemplo, se houver 5 clientes e 10 produtos, o resultado será 50 linhas (5 x 10).
 
-### 6. **SELF JOIN**
+### **SELF JOIN**
    - **Descrição**: Um **SELF JOIN** é usado para combinar uma tabela consigo mesma. Ele é essencialmente um **INNER JOIN** ou **OUTER JOIN**, mas com a mesma tabela aparecendo em ambos os lados.
    - **Sintaxe**:
      ```sql
@@ -349,8 +347,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 | **CROSS JOIN**  | Retorna o produto cartesiano de duas tabelas (todas as combinações possíveis). |
 | **SELF JOIN**   | Combina uma tabela consigo mesma. |
 
-Esses diferentes tipos de JOINs são essenciais para obter dados relacionados de várias tabelas de forma eficiente e flexível.
-
+---
 
 ### **5. Funções de Agregação**
 
@@ -363,6 +360,8 @@ SELECT AVG(Preco) AS PrecoMedio, MAX(Preco) AS PrecoMaximo, MIN(Preco) AS PrecoM
 FROM Produtos;
 ```
 
+---
+
 ### **6. Subconsultas**
 
 #### **Descrição:**
@@ -374,6 +373,8 @@ SELECT Nome, Preco
 FROM Produtos
 WHERE Preco > (SELECT AVG(Preco) FROM Produtos);
 ```
+
+---
 
 ### **7. Índices**
 
@@ -392,6 +393,7 @@ CREATE INDEX idx_produtos_preco
 ON Produtos (Preco);
 ```
 
+---
 
 ### **8. Views**
 
@@ -412,7 +414,7 @@ WHERE Preco > 1000;
 SELECT * FROM vw_produtos_caro;
 ```
 
-
+---
 
 ### **Módulo 9: Funções Definidas pelo Usuário**
 
@@ -435,6 +437,7 @@ SELECT Nome, dbo.fn_calcular_desconto(Preco, 10) AS PrecoComDesconto
 FROM Produtos;
 ```
 
+---
 
 
 ### **10. Procedures (Procedures Armazenadas)**
@@ -460,7 +463,7 @@ END;
 EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 ```
 
-
+---
 
 ### **11. Triggers**
 
@@ -480,7 +483,7 @@ BEGIN
 END;
 ```
 
-
+---
 
 ### **12. Transações**
 
@@ -502,6 +505,9 @@ ELSE
 ```
 
 
+---
+
+
 ### **13. Controle de Erros**
 
 #### **Descrição:**
@@ -518,6 +524,8 @@ BEGIN CATCH
     PRINT 'Ocorreu um erro: ' + ERROR_MESSAGE();
 END CATCH;
 ```
+
+---
 
 ### **14. Otimização de Consultas**
 
