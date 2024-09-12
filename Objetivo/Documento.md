@@ -470,3 +470,78 @@ CREATE INDEX idx_nome_empregados
 ON empregados (nome);
 ```
 
+
+### **12. Logs AWR** 
+
+A análise dos logs **AWR (Automatic Workload Repository)** é uma parte importante da monitoração e otimização do desempenho do Oracle Database. O AWR coleta e armazena automaticamente dados de performance do banco de dados em intervalos regulares, e esses dados podem ser consultados e analisados para entender o comportamento do banco, identificar gargalos de desempenho e possíveis melhorias.
+
+Aqui estão os principais passos para gerar e analisar um relatório AWR:
+
+### 1. **Gerar um Relatório AWR**
+   O AWR pode ser acessado via **Oracle Enterprise Manager (OEM)** ou via **SQL*Plus**. Abaixo estão as instruções para gerar um relatório AWR usando SQL*Plus.
+
+   #### Via SQL*Plus:
+   Conecte-se ao banco de dados com um usuário com privilégios apropriados (geralmente `SYSDBA`):
+   ```sql
+   sqlplus / as sysdba
+   ```
+
+   Depois, execute o seguinte script para gerar o relatório AWR:
+   ```sql
+   @?/rdbms/admin/awrrpt.sql
+   ```
+
+   Isso solicitará as seguintes informações:
+   - **Tipo de Relatório**: HTML ou texto (recomenda-se HTML para análise visual).
+   - **Instância do Banco**: Se houver várias instâncias, selecione a que deseja analisar.
+   - **Intervalo de Snapshots**: Escolha o intervalo (snapshots) para gerar o relatório. Esses snapshots são capturas periódicas de desempenho do sistema.
+
+   O relatório será gerado no formato selecionado e salvo no local especificado.
+
+### 2. **Estrutura do Relatório AWR**
+   O relatório AWR contém várias seções com informações detalhadas sobre o desempenho do banco de dados. Aqui estão algumas das seções mais importantes:
+
+   - **Load Profile**: Mostra uma visão geral do uso do sistema durante o intervalo, como transações por segundo, leituras lógicas e físicas.
+   - **Instance Efficiency Percentages**: Apresenta métricas de eficiência da instância, como cache hit ratios, que ajudam a identificar possíveis ajustes.
+   - **Top 5 Timed Events**: Exibe os 5 eventos mais demorados, ajudando a identificar gargalos de performance.
+   - **Wait Events**: Lista os principais eventos de espera, como I/O ou bloqueios que estão impactando o desempenho.
+   - **SQL Statistics**: Apresenta as consultas SQL que mais consomem recursos (CPU, I/O, memória).
+   - **IO Statistics**: Estatísticas detalhadas sobre atividades de leitura e escrita no disco.
+   - **Memory Statistics**: Estatísticas de uso de memória, especialmente para o **SGA** (System Global Area) e **PGA** (Program Global Area).
+
+### 3. **Como Analisar o Relatório AWR**
+
+#### 3.1 **Load Profile**
+   Veja as métricas como "transactions per second", "logical reads", "physical reads", e "DB CPU". Use essas informações para entender a carga geral do banco de dados.
+
+#### 3.2 **Top 5 Timed Events**
+   - Identifique os eventos que estão consumindo mais tempo. Esses eventos geralmente são o ponto de partida para identificar os gargalos de desempenho.
+   - Tipicamente, você encontrará esperas de I/O, locks, e eventos relacionados a rede.
+
+#### 3.3 **Instance Efficiency Percentages**
+   - Verifique as taxas de acerto do cache de buffers (Buffer Cache Hit Ratio), cache de bibliotecas (Library Cache Hit Ratio) e outras métricas que mostram a eficiência do uso de recursos.
+   - Se os percentuais estiverem muito baixos, pode ser necessário ajustar a configuração da memória do banco de dados (SGA, PGA).
+
+#### 3.4 **Wait Events**
+   - Analisar a seção de **wait events** permite entender onde o banco está "esperando". Essas esperas podem ser devidas a I/O, problemas de rede, bloqueios (locks), ou contenção de CPU.
+   - Fique atento para eventos de espera relacionados a I/O, pois isso pode indicar necessidade de otimização do armazenamento.
+
+#### 3.5 **SQL Statistics**
+   - Examine as consultas SQL que estão consumindo mais recursos (queries com alto consumo de CPU, tempo de execução, ou leituras/escritas).
+   - Verifique se há possibilidade de otimizar essas consultas com novos índices, reescrevendo a query, ou usando *hints*.
+
+#### 3.6 **I/O Statistics**
+   - Veja as estatísticas de I/O para identificar se os discos ou subsistemas de armazenamento estão sendo um gargalo.
+   - Muitos "physical reads" podem indicar que o banco de dados não está mantendo dados importantes no cache de memória.
+
+### 4. **Melhores Práticas para Análise AWR**
+   - **Comparação de Snapshots**: Compare vários relatórios AWR ao longo do tempo para observar mudanças no desempenho e identificar tendências.
+   - **Analisar SQL Problemáticas**: Otimize consultas SQL problemáticas ou com alta carga.
+   - **Ajuste de Parâmetros**: Ajuste parâmetros de inicialização como tamanho de memória (SGA, PGA) com base nas informações de eficiência e eventos de espera.
+
+### 5. **Ferramentas Auxiliares**
+   - **AWR Baselines**: Crie baselines AWR para comparar períodos de desempenho "normal" com períodos de problemas.
+   - **Oracle Enterprise Manager (OEM)**: Ferramenta gráfica que oferece relatórios AWR diretamente na interface, facilitando a visualização e análise.
+
+A análise adequada do relatório AWR pode ajudar a identificar áreas problemáticas no banco de dados e fornecer informações sobre como otimizar o desempenho, ajustando consultas, índices e a configuração do banco de dados.
+
