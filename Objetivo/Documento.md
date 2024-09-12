@@ -14,6 +14,9 @@ O SQL Server é um sistema de gerenciamento de banco de dados relacional desenvo
 SELECT * FROM Clientes;
 ```
 
+---
+
+
 ### 2. Criação de Tabelas e Tipos de Dados**
 
 #### **Descrição:**
@@ -28,6 +31,9 @@ CREATE TABLE Produtos (
     DataCadastro DATE
 );
 ```
+
+---
+
 ### 3. Inserção, Atualização e Exclusão de Dados**
 
 #### **Descrição:**
@@ -51,6 +57,9 @@ WHERE ProdutoID = 1;
 DELETE FROM Produtos
 WHERE ProdutoID = 1;
 ```
+
+---
+
 
 ### **4. Consultas**
 
@@ -366,15 +375,114 @@ FROM Produtos;
 
 #### **Descrição:**
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
+Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra consulta principal. Elas permitem que você recupere dados com base em um resultado intermediário, fornecido pela subconsulta. Existem vários tipos de subconsultas, e aqui estão alguns exemplos de uso comum:
 
-#### **Exemplo: Subconsulta em Cláusula WHERE**
-```sql
-SELECT Nome, Preco
-FROM Produtos
-WHERE Preco > (SELECT AVG(Preco) FROM Produtos);
-```
+### 6.1 **Subconsulta Simples em `WHERE`**
+   Uma subconsulta pode ser usada dentro de uma cláusula **`WHERE`** para filtrar resultados com base em uma outra consulta.
+
+   **Exemplo**: Obter os nomes de clientes que fizeram pedidos cujo valor total é maior que R$ 1000.
+   ```sql
+   SELECT Nome
+   FROM Clientes
+   WHERE ClienteID IN (
+       SELECT ClienteID
+       FROM Pedidos
+       WHERE ValorPedido > 1000
+   );
+   ```
+   - **Explicação**: A subconsulta seleciona os **`ClienteID`** que têm pedidos com valor maior que 1000. A consulta externa, então, retorna os nomes desses clientes.
+
+### 6.2 **Subconsulta em `FROM`**
+   Subconsultas podem ser usadas dentro da cláusula **`FROM`**, funcionando como uma "tabela temporária".
+
+   **Exemplo**: Obter o total de pedidos e a soma dos valores para cada cliente.
+   ```sql
+   SELECT Nome, TotalPedidos, TotalValor
+   FROM Clientes C
+   JOIN (
+       SELECT ClienteID, COUNT(*) AS TotalPedidos, SUM(ValorPedido) AS TotalValor
+       FROM Pedidos
+       GROUP BY ClienteID
+   ) P ON C.ClienteID = P.ClienteID;
+   ```
+   - **Explicação**: A subconsulta agrega os dados de pedidos (total de pedidos e soma dos valores) e a consulta externa combina esses dados com a tabela **Clientes**.
+
+### 6.3 **Subconsulta com Operador `EXISTS`**
+   O operador **`EXISTS`** é usado para verificar se uma subconsulta retorna alguma linha. Ele retorna `TRUE` se pelo menos uma linha for encontrada.
+
+   **Exemplo**: Selecionar os clientes que fizeram pelo menos um pedido.
+   ```sql
+   SELECT Nome
+   FROM Clientes C
+   WHERE EXISTS (
+       SELECT 1
+       FROM Pedidos P
+       WHERE P.ClienteID = C.ClienteID
+   );
+   ```
+   - **Explicação**: A subconsulta verifica se existe algum pedido associado a cada cliente. Se existir, o cliente é retornado na consulta externa.
+
+### 6.4 **Subconsulta em `SELECT`**
+   Subconsultas podem ser utilizadas diretamente na cláusula **`SELECT`** para calcular valores de forma independente para cada linha.
+
+   **Exemplo**: Obter o nome dos clientes e o valor total de seus pedidos.
+   ```sql
+   SELECT Nome,
+       (SELECT SUM(ValorPedido)
+        FROM Pedidos P
+        WHERE P.ClienteID = C.ClienteID) AS TotalPedidos
+   FROM Clientes C;
+   ```
+   - **Explicação**: A subconsulta no **`SELECT`** calcula a soma do valor dos pedidos para cada cliente individualmente.
+
+### 6.5 **Subconsulta com Operador `ALL`**
+   O operador **`ALL`** é utilizado para comparar um valor com todos os resultados de uma subconsulta.
+
+   **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de todos os produtos da categoria "Eletrônicos".
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Preco > ALL (
+       SELECT Preco
+       FROM Produtos
+       WHERE Categoria = 'Eletrônicos'
+   );
+   ```
+   - **Explicação**: A subconsulta retorna os preços de todos os produtos da categoria "Eletrônicos", e a consulta externa seleciona apenas os produtos que têm um preço maior do que qualquer um desses valores.
+
+### 6.6 **Subconsulta com Operador `ANY`**
+   O operador **`ANY`** é usado para comparar um valor com qualquer um dos resultados da subconsulta.
+
+   **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de algum produto da categoria "Eletrônicos".
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Preco > ANY (
+       SELECT Preco
+       FROM Produtos
+       WHERE Categoria = 'Eletrônicos'
+   );
+   ```
+   - **Explicação**: A subconsulta retorna os preços dos produtos da categoria "Eletrônicos", e a consulta externa seleciona qualquer produto que tenha um preço maior que pelo menos um desses valores.
+
+### 6.7 **Subconsulta Correlacionada**
+   Uma subconsulta é considerada **correlacionada** quando depende da consulta externa, ou seja, ela é executada repetidamente para cada linha retornada pela consulta externa.
+
+   **Exemplo**: Obter os nomes dos produtos cujo preço é maior que a média de todos os produtos da mesma categoria.
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos P1
+   WHERE Preco > (
+       SELECT AVG(Preco)
+       FROM Produtos P2
+       WHERE P2.Categoria = P1.Categoria
+   );
+   ```
+   - **Explicação**: A subconsulta correlacionada calcula a média de preços para cada categoria, e a consulta externa seleciona os produtos cujo preço é superior à média dos produtos de sua própria categoria.
+
 
 ---
+
 
 ### **7. Índices**
 
