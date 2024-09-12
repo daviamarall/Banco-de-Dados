@@ -57,20 +57,145 @@ WHERE ProdutoID = 1;
 #### **Descrição:**
 As consultas em T-SQL podem incluir cláusulas como `WHERE`, `JOIN`, `GROUP BY`, `ORDER BY`, entre outras, para obter resultados mais específicos e realizar junções entre tabelas.
 
-#### **Exemplo: Consulta com Filtros**
+A cláusula **`WHERE`** é utilizada para filtrar os registros retornados por uma consulta SQL. Ela define uma condição que os dados devem atender para serem incluídos no resultado final da consulta. Apenas as linhas que correspondem aos critérios especificados na cláusula **`WHERE`** serão retornadas.
+
+### 1. **Sintaxe da Cláusula `WHERE`**:
+```sql
+SELECT coluna1, coluna2, ...
+FROM tabela
+WHERE condição;
+```
+
+### 2. **Exemplo Básico de `WHERE`**:
+A consulta abaixo seleciona todos os produtos cujo preço é maior que 1000:
 ```sql
 SELECT Nome, Preco
 FROM Produtos
 WHERE Preco > 1000;
 ```
+- **Explicação**: Esta consulta retorna apenas os produtos cujo preço seja superior a 1000.
 
-#### **Exemplo: Join entre Tabelas**
+### 3. **Operadores Comuns Usados com `WHERE`**:
+A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, como:
+
+#### **3.1. Operadores de Comparação**:
+   - **`=`**: Igual a
+   - **`!=` ou `<>`**: Diferente de
+   - **`>`**: Maior que
+   - **`<`**: Menor que
+   - **`>=`**: Maior ou igual a
+   - **`<=`**: Menor ou igual a
+
+   **Exemplo**:
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Preco >= 500;
+   ```
+   Retorna os produtos com preço igual ou superior a 500.
+
+#### **3.2. Operadores Lógicos**:
+   - **`AND`**: Combina múltiplas condições. Todas as condições devem ser verdadeiras.
+   - **`OR`**: Combina múltiplas condições. Pelo menos uma condição deve ser verdadeira.
+   - **`NOT`**: Inverte o resultado de uma condição.
+
+   **Exemplo com `AND`**:
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Preco > 500 AND Categoria = 'Eletrônicos';
+   ```
+   Retorna produtos da categoria **Eletrônicos** com preço superior a 500.
+
+   **Exemplo com `OR`**:
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Categoria = 'Eletrônicos' OR Categoria = 'Móveis';
+   ```
+   Retorna produtos das categorias **Eletrônicos** ou **Móveis**.
+
+#### **3.3. Operador `IN`**:
+   - **Descrição**: Verifica se o valor de uma coluna corresponde a qualquer valor de uma lista de valores especificados.
+   
+   **Exemplo**:
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Categoria IN ('Eletrônicos', 'Móveis');
+   ```
+   Retorna produtos que pertencem às categorias **Eletrônicos** ou **Móveis**.
+
+#### **3.4. Operador `BETWEEN`**:
+   - **Descrição**: Seleciona valores dentro de um intervalo especificado, incluindo os limites.
+
+   **Exemplo**:
+   ```sql
+   SELECT Nome, Preco
+   FROM Produtos
+   WHERE Preco BETWEEN 500 AND 1000;
+   ```
+   Retorna produtos cujo preço esteja entre 500 e 1000.
+
+#### **3.5. Operador `LIKE`**:
+   - **Descrição**: Utilizado para realizar comparações com padrões de string. Comumente usado com curingas:
+     - **`%`**: Substitui zero ou mais caracteres.
+     - **`_`**: Substitui exatamente um caractere.
+
+   **Exemplo**:
+   ```sql
+   SELECT Nome
+   FROM Produtos
+   WHERE Nome LIKE 'S%';
+   ```
+   Retorna produtos cujo nome começa com a letra "S".
+
+#### **3.6. Operador `IS NULL`**:
+   - **Descrição**: Verifica se o valor de uma coluna é `NULL`.
+
+   **Exemplo**:
+   ```sql
+   SELECT Nome
+   FROM Produtos
+   WHERE Descricao IS NULL;
+   ```
+   Retorna produtos que não têm descrição (`NULL`).
+
+### 4. **Combinação de Condições**
+Você pode combinar vários operadores em uma cláusula **`WHERE`** para criar condições mais complexas.
+
+**Exemplo Complexo**:
 ```sql
-SELECT C.Nome, P.Nome AS Produto, P.Preco
-FROM Clientes C
-INNER JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
-INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
+SELECT Nome, Preco, Categoria
+FROM Produtos
+WHERE (Preco > 500 AND Categoria = 'Eletrônicos') OR (Preco > 1000 AND Categoria = 'Móveis');
 ```
+- **Explicação**: Esta consulta retorna produtos da categoria **Eletrônicos** com preço superior a 500, ou produtos da categoria **Móveis** com preço superior a 1000.
+
+### 5. **Uso de `WHERE` com Funções Agregadas**
+Ao usar funções agregadas como **`SUM()`**, **`COUNT()`**, **`AVG()`**, **`MAX()`**, **`MIN()`**, a cláusula **`WHERE`** filtra linhas antes de a função ser aplicada.
+
+**Exemplo**:
+```sql
+SELECT COUNT(*)
+FROM Produtos
+WHERE Preco > 1000;
+```
+- **Explicação**: Conta o número de produtos cujo preço é maior que 1000.
+
+### 6. **Diferença entre `WHERE` e `HAVING`**:
+- **`WHERE`**: Filtra linhas **antes** de a agregação ser feita (em consultas com ou sem agregação).
+- **`HAVING`**: Filtra grupos de dados **depois** da agregação (usado após `GROUP BY`).
+
+**Exemplo**:
+```sql
+SELECT Categoria, COUNT(*)
+FROM Produtos
+GROUP BY Categoria
+HAVING COUNT(*) > 10;
+```
+- **Explicação**: A cláusula **`HAVING`** filtra os grupos de categorias que têm mais de 10 produtos.
+
 
 Aqui está a explicação detalhada sobre as cláusulas **`GROUP BY`** e **`ORDER BY`**, complementando o uso de consultas avançadas em SQL:
 
