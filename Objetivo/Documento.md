@@ -475,7 +475,7 @@ ON empregados (nome);
 
 A análise dos logs **AWR (Automatic Workload Repository)** é uma parte importante da monitoração e otimização do desempenho do Oracle Database. O AWR coleta e armazena automaticamente dados de performance do banco de dados em intervalos regulares, e esses dados podem ser consultados e analisados para entender o comportamento do banco, identificar gargalos de desempenho e possíveis melhorias.
 
-Aqui estão os principais passos para gerar e analisar um relatório AWR:
+Aqui estão os principais passos para gerar o AWR:
 
 ### 1. **Gerar um Relatório AWR**
    O AWR pode ser acessado via **Oracle Enterprise Manager (OEM)** ou via **SQL*Plus**. Abaixo estão as instruções para gerar um relatório AWR usando SQL*Plus.
@@ -498,7 +498,70 @@ Aqui estão os principais passos para gerar e analisar um relatório AWR:
 
    O relatório será gerado no formato selecionado e salvo no local especificado.
 
-### 2. **Estrutura do Relatório AWR**
+### **AWR via SQL Developer** 
+
+Para extrair o **AWR (Automatic Workload Repository)** usando o **Oracle SQL Developer**, siga os passos abaixo:
+
+### **Conectar ao Banco de Dados**
+   Primeiro, conecte-se ao banco de dados Oracle usando o Oracle SQL Developer com um usuário que tenha privilégios administrativos (geralmente `SYSDBA` ou outro usuário com permissões para acessar o AWR).
+
+### **Acessar o Repositório AWR via SQL Developer**
+
+   Você pode rodar o script **`awrrpt.sql`** diretamente pelo Oracle SQL Developer:
+
+   #### Passos:
+   - Conecte-se ao banco de dados.
+   - Abra uma nova aba de SQL (Ctrl+Shift+N) e execute o seguinte comando para acessar o script `awrrpt.sql` que gera o relatório AWR:
+     ```sql
+     @?/rdbms/admin/awrrpt.sql
+     ```
+   - Isso solicitará uma série de informações:
+     - **Tipo de Relatório**: Escolha entre HTML ou texto (recomenda-se HTML).
+     - **Identificação da Instância**: Se houver mais de uma instância, escolha a correta.
+     - **Intervalo de Snapshots**: O sistema pedirá para você escolher o intervalo de snapshots que deseja usar. Você verá os snapshots disponíveis para selecionar.
+
+   - O relatório será gerado e, dependendo do formato (HTML ou texto), você poderá visualizá-lo diretamente no SQL Developer ou salvá-lo como um arquivo em seu sistema.
+
+### **Interpretar e Salvar o Relatório**
+   Se você optar pelo formato **HTML**, o Oracle SQL Developer provavelmente exibirá o relatório diretamente no painel de saída ou em uma janela do navegador, permitindo que você visualize e analise.
+
+   Caso tenha gerado o relatório no formato **texto**, o conteúdo aparecerá diretamente na janela de resultados do Oracle SQL Developer. Você poderá copiá-lo ou salvá-lo como um arquivo de texto para análise posterior.
+
+### **Gerar AWR usando PL/SQL**
+   
+   Outra opção é gerar o relatório AWR por meio de um comando PL/SQL diretamente no Oracle SQL Developer. O seguinte exemplo gera o relatório entre dois snapshots específicos:
+
+   ```sql
+   DECLARE
+       l_report CLOB;
+   BEGIN
+       l_report := DBMS_WORKLOAD_REPOSITORY.awr_report_html(
+                        l_dbid     => (SELECT dbid FROM v$database),
+                        l_inst_num => 1,
+                        l_beg_snap => :begin_snap,   -- Substitua com o ID do snapshot inicial
+                        l_end_snap => :end_snap      -- Substitua com o ID do snapshot final
+                    );
+       DBMS_OUTPUT.put_line(l_report);
+   END;
+   /
+   ```
+
+   Você precisará substituir `:begin_snap` e `:end_snap` pelos IDs dos snapshots que deseja analisar. O relatório será gerado no formato HTML.
+
+### **Obter os IDs dos Snapshots**
+   Para verificar os snapshots disponíveis, execute a seguinte consulta no Oracle SQL Developer:
+   ```sql
+   SELECT snap_id, begin_interval_time, end_interval_time
+   FROM dba_hist_snapshot
+   ORDER BY snap_id;
+   ```
+
+   Isso retornará os IDs dos snapshots e seus horários, permitindo que você escolha o intervalo correto para gerar o relatório.
+
+### **Salvar o Relatório**
+   Uma vez gerado o relatório, você pode salvá-lo em seu computador. Se for HTML, você pode salvar diretamente como um arquivo `.html` e abrir em qualquer navegador para visualização.
+
+### **Estrutura do Relatório AWR**
    O relatório AWR contém várias seções com informações detalhadas sobre o desempenho do banco de dados. Aqui estão algumas das seções mais importantes:
 
    - **Load Profile**: Mostra uma visão geral do uso do sistema durante o intervalo, como transações por segundo, leituras lógicas e físicas.
