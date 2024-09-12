@@ -72,6 +72,161 @@ INNER JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
 INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
 ```
 
+Aqui está a explicação detalhada sobre as cláusulas **`GROUP BY`** e **`ORDER BY`**, complementando o uso de consultas avançadas em SQL:
+
+### 1. **GROUP BY**
+   - **Descrição**: A cláusula **`GROUP BY`** é usada para agrupar linhas que compartilham um valor em comum em uma ou mais colunas. Geralmente, é usada em conjunto com funções agregadas, como **`SUM()`**, **`COUNT()`**, **`AVG()`**, **`MAX()`** e **`MIN()`**, para realizar cálculos em cada grupo de dados.
+   - **Sintaxe**:
+     ```sql
+     SELECT Coluna1, Coluna2, SUM(Coluna3) AS Total
+     FROM Tabela
+     GROUP BY Coluna1, Coluna2;
+     ```
+
+   - **Exemplo**: Suponha que você queira calcular o total de vendas por cada cliente. Você usaria a seguinte consulta:
+     ```sql
+     SELECT ClienteID, SUM(ValorPedido) AS TotalVendas
+     FROM Pedidos
+     GROUP BY ClienteID;
+     ```
+
+   - **Explicação**: A consulta agrupa os pedidos por **ClienteID** e calcula a soma dos valores dos pedidos para cada cliente. O resultado exibe o total de vendas para cada cliente.
+
+   - **Observação**: Todas as colunas na cláusula `SELECT` que não fazem parte de uma função agregada devem aparecer na cláusula `GROUP BY`.
+
+### 2. **ORDER BY**
+   - **Descrição**: A cláusula **`ORDER BY`** é usada para ordenar os resultados de uma consulta com base em uma ou mais colunas. Por padrão, os resultados são ordenados em ordem crescente, mas você pode especificar explicitamente a ordem crescente ou decrescente.
+   - **Sintaxe**:
+     ```sql
+     SELECT Coluna1, Coluna2
+     FROM Tabela
+     ORDER BY Coluna1 [ASC|DESC];
+     ```
+
+   - **Exemplo 1**: Ordenar produtos por preço de forma crescente (padrão):
+     ```sql
+     SELECT Nome, Preco
+     FROM Produtos
+     ORDER BY Preco;
+     ```
+
+   - **Exemplo 2**: Ordenar produtos por preço de forma decrescente:
+     ```sql
+     SELECT Nome, Preco
+     FROM Produtos
+     ORDER BY Preco DESC;
+     ```
+
+   - **Explicação**: No primeiro exemplo, os produtos são ordenados pelo preço em ordem crescente, enquanto no segundo exemplo, eles são exibidos em ordem decrescente.
+
+   - **Ordenação Múltipla**: Você pode ordenar por mais de uma coluna:
+     ```sql
+     SELECT Nome, Categoria, Preco
+     FROM Produtos
+     ORDER BY Categoria ASC, Preco DESC;
+     ```
+     Neste exemplo, a lista de produtos será ordenada primeiro pela categoria (em ordem crescente) e, dentro de cada categoria, pelos preços (em ordem decrescente).
+
+### Diferença entre `GROUP BY` e `ORDER BY`:
+- **`GROUP BY`** agrupa os resultados com base em uma ou mais colunas, frequentemente usado com funções agregadas (soma, contagem, etc.).
+- **`ORDER BY`** apenas ordena o resultado, sem alterar a quantidade de linhas retornadas ou fazer cálculos.
+
+### Exemplo Combinado: `GROUP BY` com `ORDER BY`
+Você pode combinar **`GROUP BY`** e **`ORDER BY`** em uma mesma consulta. Por exemplo, para obter o total de vendas por cliente e ordenar pelo maior total de vendas:
+```sql
+SELECT ClienteID, SUM(ValorPedido) AS TotalVendas
+FROM Pedidos
+GROUP BY ClienteID
+ORDER BY TotalVendas DESC;
+```
+
+Neste caso, o **`GROUP BY`** agrupa as vendas por cliente, e o **`ORDER BY`** ordena os resultados em ordem decrescente de vendas.
+
+Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas com base em uma condição relacionada. Existem diferentes tipos de JOINs, cada um com comportamentos distintos ao combinar os dados. Aqui estão os principais tipos de JOINs em SQL:
+
+### 1. **INNER JOIN**
+   - **Descrição**: Retorna apenas as linhas que têm correspondências nas duas tabelas. Se não houver correspondência, a linha é excluída do resultado.
+   - **Sintaxe**:
+     ```sql
+     SELECT C.Nome, P.Nome AS Produto, P.Preco
+     FROM Clientes C
+     INNER JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
+     INNER JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
+     ```
+
+   - **Explicação**: Esse exemplo combina dados de **Clientes**, **Pedidos**, e **Produtos**, mas só retorna os registros em que há uma correspondência nas três tabelas.
+
+### 2. **LEFT JOIN (ou LEFT OUTER JOIN)**
+   - **Descrição**: Retorna todas as linhas da tabela à esquerda (primeira tabela) e as linhas correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, serão retornados `NULLs` nos campos da tabela da direita.
+   - **Sintaxe**:
+     ```sql
+     SELECT C.Nome, P.Nome AS Produto, P.Preco
+     FROM Clientes C
+     LEFT JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
+     LEFT JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
+     ```
+
+   - **Explicação**: Retorna todos os clientes, mesmo que eles não tenham feito pedidos. Se não houver pedido ou produto associado a um cliente, o SQL preenche as colunas de **Pedidos** e **Produtos** com valores `NULL`.
+
+### 3. **RIGHT JOIN (ou RIGHT OUTER JOIN)**
+   - **Descrição**: O comportamento é o oposto do **LEFT JOIN**. Retorna todas as linhas da tabela à direita (segunda tabela) e as linhas correspondentes da tabela à esquerda. Se não houver correspondência na tabela à esquerda, serão retornados `NULLs` nos campos da tabela da esquerda.
+   - **Sintaxe**:
+     ```sql
+     SELECT C.Nome, P.Nome AS Produto, P.Preco
+     FROM Clientes C
+     RIGHT JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
+     RIGHT JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
+     ```
+
+   - **Explicação**: Isso retornaria todos os produtos, mesmo que não estejam associados a nenhum pedido ou cliente. Se um produto não tiver sido encomendado, os campos da tabela **Clientes** e **Pedidos** serão preenchidos com `NULL`.
+
+### 4. **FULL JOIN (ou FULL OUTER JOIN)**
+   - **Descrição**: Retorna todas as linhas quando há uma correspondência em qualquer uma das tabelas. Se não houver correspondência em ambas as tabelas, as colunas da tabela correspondente que não tiver valores serão preenchidas com `NULL`.
+   - **Sintaxe**:
+     ```sql
+     SELECT C.Nome, P.Nome AS Produto, P.Preco
+     FROM Clientes C
+     FULL JOIN Pedidos Ped ON C.ClienteID = Ped.ClienteID
+     FULL JOIN Produtos P ON Ped.ProdutoID = P.ProdutoID;
+     ```
+
+   - **Explicação**: Isso retorna todos os clientes, todos os pedidos e todos os produtos, independentemente de haver ou não correspondências entre eles. Se não houver correspondência, os valores `NULL` serão usados para preencher as colunas ausentes.
+
+### 5. **CROSS JOIN**
+   - **Descrição**: Combina cada linha de uma tabela com todas as linhas de outra tabela, resultando em um produto cartesiano (todas as combinações possíveis). Não exige uma condição `ON`.
+   - **Sintaxe**:
+     ```sql
+     SELECT C.Nome, P.Nome AS Produto
+     FROM Clientes C
+     CROSS JOIN Produtos P;
+     ```
+
+   - **Explicação**: Isso retorna todas as combinações possíveis de **Clientes** e **Produtos**. Por exemplo, se houver 5 clientes e 10 produtos, o resultado será 50 linhas (5 x 10).
+
+### 6. **SELF JOIN**
+   - **Descrição**: Um **SELF JOIN** é usado para combinar uma tabela consigo mesma. Ele é essencialmente um **INNER JOIN** ou **OUTER JOIN**, mas com a mesma tabela aparecendo em ambos os lados.
+   - **Sintaxe**:
+     ```sql
+     SELECT E1.Nome AS Funcionario, E2.Nome AS Gerente
+     FROM Funcionarios E1
+     LEFT JOIN Funcionarios E2 ON E1.GerenteID = E2.FuncionarioID;
+     ```
+
+   - **Explicação**: Aqui, a tabela **Funcionarios** é associada a si mesma para identificar funcionários e seus respectivos gerentes.
+
+### Resumo:
+| Tipo de Join    | Descrição |
+|-----------------|-----------|
+| **INNER JOIN**  | Retorna apenas as linhas que têm correspondência em ambas as tabelas. |
+| **LEFT JOIN**   | Retorna todas as linhas da tabela à esquerda, e as correspondentes da tabela à direita. Caso não haja correspondência, preenche com `NULL`. |
+| **RIGHT JOIN**  | Retorna todas as linhas da tabela à direita, e as correspondentes da tabela à esquerda. Caso não haja correspondência, preenche com `NULL`. |
+| **FULL JOIN**   | Retorna todas as linhas de ambas as tabelas, com `NULL` para as colunas não correspondentes. |
+| **CROSS JOIN**  | Retorna o produto cartesiano de duas tabelas (todas as combinações possíveis). |
+| **SELF JOIN**   | Combina uma tabela consigo mesma. |
+
+Esses diferentes tipos de JOINs são essenciais para obter dados relacionados de várias tabelas de forma eficiente e flexível.
+
+
 ### **5. Funções de Agregação**
 
 #### **Descrição:**
