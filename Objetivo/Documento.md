@@ -551,7 +551,7 @@ FROM Produtos;
 ---
 
 
-### **13. Procedures **
+### **13. Procedures**
 
 #### **Descrição:**
 Procedures são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
@@ -864,7 +864,7 @@ END;
 
 ---
 
-### **11. Índices **
+### **11. Índices**
 
 #### **Descrição:**
 Índices são estruturas de dados usadas para melhorar a performance das consultas. Existem vários tipos de índices, como B-tree e Bitmap, cada um com suas características e usos específicos.
@@ -978,7 +978,7 @@ Para extrair o **AWR (Automatic Workload Repository)** usando o **Oracle SQL Dev
    - **IO Statistics**: Estatísticas detalhadas sobre atividades de leitura e escrita no disco.
    - **Memory Statistics**: Estatísticas de uso de memória, especialmente para o **SGA** (System Global Area) e **PGA** (Program Global Area).
 
-### 13. **Como Analisar o Relatório AWR**
+### **13. Como Analisar o Relatório AWR**
 
 #### **Load Profile**
    Veja as métricas como "transactions per second", "logical reads", "physical reads", e "DB CPU". Use essas informações para entender a carga geral do banco de dados.
