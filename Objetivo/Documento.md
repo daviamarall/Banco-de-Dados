@@ -1,6 +1,6 @@
 ## **Objetivo** ## 
 
-Este documento cobre os principais conceitos para se trabalhar com SQL Server e Oracle PL/SQL, fornecendo uma base sólida para a manipulação de dados e administração do banco de dados.
+Este documento cobre os principais conceitos para se trabalhar com SQL Server e Oracle PL/SQL, fornecendo uma base para a manipulação de dados e administração do banco de dados.
 
 ## **SQL Server** ##
 
@@ -16,8 +16,7 @@ SELECT * FROM Clientes;
 
 ---
 
-
-### 2. Criação de Tabelas e Tipos de Dados**
+### **2. Criação de Tabelas e Tipos de Dados**
 
 #### **Descrição:**
 No SQL Server, as tabelas armazenam dados em linhas e colunas. Cada coluna tem um tipo de dado, como `INT`, `VARCHAR`, `DATE`, entre outros.
@@ -34,7 +33,7 @@ CREATE TABLE Produtos (
 
 ---
 
-### 3. Inserção, Atualização e Exclusão de Dados**
+### **3. Inserção, Atualização e Exclusão de Dados**
 
 #### **Descrição:**
 No SQL Server, você pode inserir, atualizar e excluir dados usando os comandos `INSERT`, `UPDATE` e `DELETE`.
@@ -170,7 +169,9 @@ A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, c
    ```
    Retorna produtos que não têm descrição (`NULL`).
 
-### 4. **Combinação de Condições**
+---
+
+### **5. Combinação de Condições**
 Você pode combinar vários operadores em uma cláusula **`WHERE`** para criar condições mais complexas.
 
 **Exemplo Complexo**:
@@ -181,7 +182,9 @@ WHERE (Preco > 500 AND Categoria = 'Eletrônicos') OR (Preco > 1000 AND Categori
 ```
 - **Explicação**: Esta consulta retorna produtos da categoria **Eletrônicos** com preço superior a 500, ou produtos da categoria **Móveis** com preço superior a 1000.
 
-### 5. **Uso de `WHERE` com Funções Agregadas**
+---
+
+### **6. Uso de `WHERE` com Funções Agregadas**
 Ao usar funções agregadas como **`SUM()`**, **`COUNT()`**, **`AVG()`**, **`MAX()`**, **`MIN()`**, a cláusula **`WHERE`** filtra linhas antes de a função ser aplicada.
 
 **Exemplo**:
@@ -192,7 +195,9 @@ WHERE Preco > 1000;
 ```
 - **Explicação**: Conta o número de produtos cujo preço é maior que 1000.
 
-### 6. **Diferença entre `WHERE` e `HAVING`**:
+---
+
+### **7. Diferença entre `WHERE` e `HAVING`**:
 - **`WHERE`**: Filtra linhas **antes** de a agregação ser feita (em consultas com ou sem agregação).
 - **`HAVING`**: Filtra grupos de dados **depois** da agregação (usado após `GROUP BY`).
 
@@ -358,7 +363,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
 ---
 
-### **5. Funções de Agregação**
+### **8. Funções de Agregação**
 
 #### **Descrição:**
 As funções de agregação, como `SUM`, `AVG`, `COUNT`, `MAX` e `MIN`, são usadas para realizar cálculos em conjunto de dados.
@@ -371,13 +376,13 @@ FROM Produtos;
 
 ---
 
-### **6. Subconsultas**
+### **9. Subconsultas**
 
 #### **Descrição:**
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
 Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra consulta principal. Elas permitem que você recupere dados com base em um resultado intermediário, fornecido pela subconsulta. Existem vários tipos de subconsultas, e aqui estão alguns exemplos de uso comum:
 
-### 6.1 **Subconsulta Simples em `WHERE`**
+### **9.1 Subconsulta Simples em `WHERE`**
    Uma subconsulta pode ser usada dentro de uma cláusula **`WHERE`** para filtrar resultados com base em uma outra consulta.
 
    **Exemplo**: Obter os nomes de clientes que fizeram pedidos cujo valor total é maior que R$ 1000.
@@ -392,7 +397,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta seleciona os **`ClienteID`** que têm pedidos com valor maior que 1000. A consulta externa, então, retorna os nomes desses clientes.
 
-### 6.2 **Subconsulta em `FROM`**
+### **9.2 Subconsulta em `FROM`**
    Subconsultas podem ser usadas dentro da cláusula **`FROM`**, funcionando como uma "tabela temporária".
 
    **Exemplo**: Obter o total de pedidos e a soma dos valores para cada cliente.
@@ -407,7 +412,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta agrega os dados de pedidos (total de pedidos e soma dos valores) e a consulta externa combina esses dados com a tabela **Clientes**.
 
-### 6.3 **Subconsulta com Operador `EXISTS`**
+### **9.3 Subconsulta com Operador `EXISTS`**
    O operador **`EXISTS`** é usado para verificar se uma subconsulta retorna alguma linha. Ele retorna `TRUE` se pelo menos uma linha for encontrada.
 
    **Exemplo**: Selecionar os clientes que fizeram pelo menos um pedido.
@@ -422,7 +427,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta verifica se existe algum pedido associado a cada cliente. Se existir, o cliente é retornado na consulta externa.
 
-### 6.4 **Subconsulta em `SELECT`**
+### **9.4 Subconsulta em `SELECT`**
    Subconsultas podem ser utilizadas diretamente na cláusula **`SELECT`** para calcular valores de forma independente para cada linha.
 
    **Exemplo**: Obter o nome dos clientes e o valor total de seus pedidos.
@@ -435,7 +440,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta no **`SELECT`** calcula a soma do valor dos pedidos para cada cliente individualmente.
 
-### 6.5 **Subconsulta com Operador `ALL`**
+### **9.5 Subconsulta com Operador `ALL`**
    O operador **`ALL`** é utilizado para comparar um valor com todos os resultados de uma subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de todos os produtos da categoria "Eletrônicos".
@@ -450,7 +455,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços de todos os produtos da categoria "Eletrônicos", e a consulta externa seleciona apenas os produtos que têm um preço maior do que qualquer um desses valores.
 
-### 6.6 **Subconsulta com Operador `ANY`**
+### **9.6 Subconsulta com Operador `ANY`**
    O operador **`ANY`** é usado para comparar um valor com qualquer um dos resultados da subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de algum produto da categoria "Eletrônicos".
@@ -465,7 +470,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços dos produtos da categoria "Eletrônicos", e a consulta externa seleciona qualquer produto que tenha um preço maior que pelo menos um desses valores.
 
-### 6.7 **Subconsulta Correlacionada**
+### **9.7 Subconsulta Correlacionada**
    Uma subconsulta é considerada **correlacionada** quando depende da consulta externa, ou seja, ela é executada repetidamente para cada linha retornada pela consulta externa.
 
    **Exemplo**: Obter os nomes dos produtos cujo preço é maior que a média de todos os produtos da mesma categoria.
@@ -484,7 +489,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
 ---
 
 
-### **7. Índices**
+### **10. Índices**
 
 #### **Descrição:**
 Índices são usados para melhorar a performance das consultas ao acelerar a recuperação dos dados. O SQL Server oferece índices `Clustered` e `Non-Clustered`.
@@ -503,7 +508,7 @@ ON Produtos (Preco);
 
 ---
 
-### **8. Views**
+### **11. Views**
 
 #### **Descrição:**
 Views são consultas salvas no banco de dados como objetos reutilizáveis. Elas podem ser usadas para simplificar o acesso a dados complexos ou para restringir o acesso a determinadas colunas.
@@ -524,7 +529,7 @@ SELECT * FROM vw_produtos_caro;
 
 ---
 
-### **Módulo 9: Funções Definidas pelo Usuário**
+### **12: Funções Definidas pelo Usuário**
 
 #### **Descrição:**
 Funções definidas pelo usuário podem ser criadas para encapsular lógica de negócios ou cálculos que serão reutilizados nas consultas.
@@ -548,7 +553,7 @@ FROM Produtos;
 ---
 
 
-### **10. Procedures (Procedures Armazenadas)**
+### **13. Procedures (Procedures Armazenadas)**
 
 #### **Descrição:**
 Procedures armazenadas são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
@@ -573,7 +578,7 @@ EXEC sp_atualizar_preco @produtoID = 1, @novoPreco = 3000.00;
 
 ---
 
-### **11. Triggers**
+### **14. Triggers**
 
 #### **Descrição:**
 Triggers são blocos de código que são automaticamente executados em resposta a eventos, como `INSERT`, `UPDATE` ou `DELETE`, em uma tabela.
@@ -593,7 +598,7 @@ END;
 
 ---
 
-### **12. Transações**
+### **15. Trasactions**
 
 #### **Descrição:**
 As transações garantem que um conjunto de operações SQL sejam executadas com sucesso ou, em caso de falha, todas sejam revertidas. Elas garantem consistência e integridade dos dados.
@@ -612,11 +617,9 @@ ELSE
     COMMIT TRANSACTION;
 ```
 
-
 ---
 
-
-### **13. Controle de Erros**
+### **16. Controle de Erros**
 
 #### **Descrição:**
 No SQL Server, é possível capturar e lidar com erros usando `TRY...CATCH`. Isso permite tratar falhas e garantir a integridade dos dados.
@@ -635,7 +638,7 @@ END CATCH;
 
 ---
 
-### **14. Otimização de Consultas**
+### **17. Planos de Execução**
 
 #### **Descrição:**
 A otimização de consultas é fundamental para garantir a eficiência do banco de dados. Técnicas como o uso adequado de índices, views, e análise de planos de execução ajudam a melhorar a performance.
@@ -679,6 +682,7 @@ END;
 5. **END;** Finaliza o bloco PL/SQL.
 
 
+---
 
 
 ### **2: Variáveis e Tipos de Dados**
@@ -696,6 +700,7 @@ BEGIN
 END;
 ```
 
+---
 
 ### **3: Estruturas de Controle**
 
@@ -717,6 +722,8 @@ BEGIN
 END;
 ```
 
+---
+
 #### **4: Loop FOR**
 ```sql
 BEGIN
@@ -726,6 +733,7 @@ BEGIN
 END;
 ```
 
+---
 
 ### **5: Cursores**
 
@@ -749,6 +757,7 @@ BEGIN
 END;
 ```
 
+---
 
 ### **6: Funções (Functions)**
 
@@ -766,6 +775,7 @@ BEGIN
 END;
 ```
 
+---
 
 ### **7: Procedures (Procedures Armazenadas)**
 
@@ -783,6 +793,7 @@ BEGIN
 END;
 ```
 
+---
 
 ### **8: Pacotes (Packages)**
 
@@ -815,7 +826,7 @@ CREATE OR REPLACE PACKAGE BODY pacote_gerenciamento_empregados IS
 END pacote_gerenciamento_empregados;
 ```
 
-
+---
 
 ### **9: Triggers**
 
@@ -832,7 +843,7 @@ BEGIN
 END;
 ```
 
-
+---
 
 ### **10. Jobs (Agendamento de Tarefas)**
 
@@ -853,7 +864,7 @@ BEGIN
 END;
 ```
 
-
+---
 
 ### **11. Índices (Indexes)**
 
@@ -866,6 +877,7 @@ CREATE INDEX idx_nome_empregados
 ON empregados (nome);
 ```
 
+---
 
 ### **12. Logs AWR** 
 
@@ -873,7 +885,7 @@ A análise dos logs **AWR (Automatic Workload Repository)** é uma parte importa
 
 Aqui estão os principais passos para gerar o AWR:
 
-### 1. **Gerar um Relatório AWR**
+### 12.1. **Gerar um Relatório AWR**
    O AWR pode ser acessado via **Oracle Enterprise Manager (OEM)** ou via **SQL*Plus**. Abaixo estão as instruções para gerar um relatório AWR usando SQL*Plus.
 
    #### Via SQL*Plus:
@@ -968,39 +980,39 @@ Para extrair o **AWR (Automatic Workload Repository)** usando o **Oracle SQL Dev
    - **IO Statistics**: Estatísticas detalhadas sobre atividades de leitura e escrita no disco.
    - **Memory Statistics**: Estatísticas de uso de memória, especialmente para o **SGA** (System Global Area) e **PGA** (Program Global Area).
 
-### 3. **Como Analisar o Relatório AWR**
+### 13. **Como Analisar o Relatório AWR**
 
-#### 3.1 **Load Profile**
+#### **Load Profile**
    Veja as métricas como "transactions per second", "logical reads", "physical reads", e "DB CPU". Use essas informações para entender a carga geral do banco de dados.
 
-#### 3.2 **Top 5 Timed Events**
+#### **Top 5 Timed Events**
    - Identifique os eventos que estão consumindo mais tempo. Esses eventos geralmente são o ponto de partida para identificar os gargalos de desempenho.
    - Tipicamente, você encontrará esperas de I/O, locks, e eventos relacionados a rede.
 
-#### 3.3 **Instance Efficiency Percentages**
+#### **Instance Efficiency Percentages**
    - Verifique as taxas de acerto do cache de buffers (Buffer Cache Hit Ratio), cache de bibliotecas (Library Cache Hit Ratio) e outras métricas que mostram a eficiência do uso de recursos.
    - Se os percentuais estiverem muito baixos, pode ser necessário ajustar a configuração da memória do banco de dados (SGA, PGA).
 
-#### 3.4 **Wait Events**
+#### **Wait Events**
    - Analisar a seção de **wait events** permite entender onde o banco está "esperando". Essas esperas podem ser devidas a I/O, problemas de rede, bloqueios (locks), ou contenção de CPU.
    - Fique atento para eventos de espera relacionados a I/O, pois isso pode indicar necessidade de otimização do armazenamento.
 
-#### 3.5 **SQL Statistics**
+#### **SQL Statistics**
    - Examine as consultas SQL que estão consumindo mais recursos (queries com alto consumo de CPU, tempo de execução, ou leituras/escritas).
    - Verifique se há possibilidade de otimizar essas consultas com novos índices, reescrevendo a query, ou usando *hints*.
 
-#### 3.6 **I/O Statistics**
+#### **I/O Statistics**
    - Veja as estatísticas de I/O para identificar se os discos ou subsistemas de armazenamento estão sendo um gargalo.
    - Muitos "physical reads" podem indicar que o banco de dados não está mantendo dados importantes no cache de memória.
 
-### 4. **Melhores Práticas para Análise AWR**
+### **Melhores Práticas para Análise AWR**
    - **Comparação de Snapshots**: Compare vários relatórios AWR ao longo do tempo para observar mudanças no desempenho e identificar tendências.
    - **Analisar SQL Problemáticas**: Otimize consultas SQL problemáticas ou com alta carga.
    - **Ajuste de Parâmetros**: Ajuste parâmetros de inicialização como tamanho de memória (SGA, PGA) com base nas informações de eficiência e eventos de espera.
 
-### 5. **Ferramentas Auxiliares**
+### **Ferramentas Auxiliares**
    - **AWR Baselines**: Crie baselines AWR para comparar períodos de desempenho "normal" com períodos de problemas.
    - **Oracle Enterprise Manager (OEM)**: Ferramenta gráfica que oferece relatórios AWR diretamente na interface, facilitando a visualização e análise.
 
-A análise adequada do relatório AWR pode ajudar a identificar áreas problemáticas no banco de dados e fornecer informações sobre como otimizar o desempenho, ajustando consultas, índices e a configuração do banco de dados.
+A análise adequada do relatório AWR vai ajudar a identificar áreas problemáticas no banco de dados e fornecer informações sobre como otimizar o desempenho, ajustando consultas, índices e a configuração do banco de dados.
 
