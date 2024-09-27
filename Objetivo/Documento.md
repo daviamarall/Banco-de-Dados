@@ -277,8 +277,6 @@ ORDER BY TotalVendas DESC;
 ```
 Neste caso, o **`GROUP BY`** agrupa as vendas por cliente, e o **`ORDER BY`** ordena os resultados em ordem decrescente de vendas.
 
----
-
 Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas com base em uma condição relacionada. Existem diferentes tipos de JOINs, cada um com comportamentos distintos ao combinar os dados. Aqui estão os principais tipos de JOINs em SQL:
 
 ### **INNER JOIN**
@@ -553,10 +551,10 @@ FROM Produtos;
 ---
 
 
-### **13. Procedures (Procedures Armazenadas)**
+### **13. Procedures **
 
 #### **Descrição:**
-Procedures armazenadas são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
+Procedures são blocos de código SQL que podem ser reutilizados para realizar tarefas repetitivas. Elas permitem a passagem de parâmetros de entrada e saída.
 
 #### **Exemplo: Criando uma Procedure**
 ```sql
