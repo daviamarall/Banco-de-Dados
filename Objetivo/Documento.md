@@ -338,7 +338,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retorna todas as combinações possíveis de **Clientes** e **Produtos**. Por exemplo, se houver 5 clientes e 10 produtos, o resultado será 50 linhas (5 x 10).
 
-### **SELF JOIN**
+#### **SELF JOIN**
    - **Descrição**: Um **SELF JOIN** é usado para combinar uma tabela consigo mesma. Ele é essencialmente um **INNER JOIN** ou **OUTER JOIN**, mas com a mesma tabela aparecendo em ambos os lados.
    - **Sintaxe**:
      ```sql
@@ -468,7 +468,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços dos produtos da categoria "Eletrônicos", e a consulta externa seleciona qualquer produto que tenha um preço maior que pelo menos um desses valores.
 
-#### ** Subconsulta Correlacionada**
+#### **Subconsulta Correlacionada**
    Uma subconsulta é considerada **correlacionada** quando depende da consulta externa, ou seja, ela é executada repetidamente para cada linha retornada pela consulta externa.
 
    **Exemplo**: Obter os nomes dos produtos cujo preço é maior que a média de todos os produtos da mesma categoria.
