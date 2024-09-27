@@ -382,7 +382,7 @@ FROM Produtos;
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
 Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra consulta principal. Elas permitem que você recupere dados com base em um resultado intermediário, fornecido pela subconsulta. Existem vários tipos de subconsultas, e aqui estão alguns exemplos de uso comum:
 
-### **9.1 Subconsulta Simples em `WHERE`**
+### ** Subconsulta Simples em `WHERE`**
    Uma subconsulta pode ser usada dentro de uma cláusula **`WHERE`** para filtrar resultados com base em uma outra consulta.
 
    **Exemplo**: Obter os nomes de clientes que fizeram pedidos cujo valor total é maior que R$ 1000.
@@ -397,7 +397,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta seleciona os **`ClienteID`** que têm pedidos com valor maior que 1000. A consulta externa, então, retorna os nomes desses clientes.
 
-### **9.2 Subconsulta em `FROM`**
+### **Subconsulta em `FROM`**
    Subconsultas podem ser usadas dentro da cláusula **`FROM`**, funcionando como uma "tabela temporária".
 
    **Exemplo**: Obter o total de pedidos e a soma dos valores para cada cliente.
@@ -412,7 +412,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta agrega os dados de pedidos (total de pedidos e soma dos valores) e a consulta externa combina esses dados com a tabela **Clientes**.
 
-### **9.3 Subconsulta com Operador `EXISTS`**
+### **Subconsulta com Operador `EXISTS`**
    O operador **`EXISTS`** é usado para verificar se uma subconsulta retorna alguma linha. Ele retorna `TRUE` se pelo menos uma linha for encontrada.
 
    **Exemplo**: Selecionar os clientes que fizeram pelo menos um pedido.
@@ -427,7 +427,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta verifica se existe algum pedido associado a cada cliente. Se existir, o cliente é retornado na consulta externa.
 
-### **9.4 Subconsulta em `SELECT`**
+### ** Subconsulta em `SELECT`**
    Subconsultas podem ser utilizadas diretamente na cláusula **`SELECT`** para calcular valores de forma independente para cada linha.
 
    **Exemplo**: Obter o nome dos clientes e o valor total de seus pedidos.
@@ -440,7 +440,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta no **`SELECT`** calcula a soma do valor dos pedidos para cada cliente individualmente.
 
-### **9.5 Subconsulta com Operador `ALL`**
+### **Subconsulta com Operador `ALL`**
    O operador **`ALL`** é utilizado para comparar um valor com todos os resultados de uma subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de todos os produtos da categoria "Eletrônicos".
@@ -455,7 +455,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços de todos os produtos da categoria "Eletrônicos", e a consulta externa seleciona apenas os produtos que têm um preço maior do que qualquer um desses valores.
 
-### **9.6 Subconsulta com Operador `ANY`**
+### **Subconsulta com Operador `ANY`**
    O operador **`ANY`** é usado para comparar um valor com qualquer um dos resultados da subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de algum produto da categoria "Eletrônicos".
@@ -470,7 +470,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços dos produtos da categoria "Eletrônicos", e a consulta externa seleciona qualquer produto que tenha um preço maior que pelo menos um desses valores.
 
-### **9.7 Subconsulta Correlacionada**
+### ** Subconsulta Correlacionada**
    Uma subconsulta é considerada **correlacionada** quando depende da consulta externa, ou seja, ela é executada repetidamente para cada linha retornada pela consulta externa.
 
    **Exemplo**: Obter os nomes dos produtos cujo preço é maior que a média de todos os produtos da mesma categoria.
@@ -707,7 +707,7 @@ END;
 #### **Descrição:**
 PL/SQL permite usar estruturas de controle como `IF`, `LOOP`, `WHILE` e `FOR`. Essas estruturas são usadas para controlar o fluxo de execução do código.
 
-#### **3: Estrutura IF-THEN-ELSE**
+#### ** Estrutura IF-THEN-ELSE**
 
 **Exemplo:**
 ```sql
@@ -866,7 +866,7 @@ END;
 
 ---
 
-### **11. Índices (Indexes)**
+### **11. Índices **
 
 #### **Descrição:**
 Índices são estruturas de dados usadas para melhorar a performance das consultas. Existem vários tipos de índices, como B-tree e Bitmap, cada um com suas características e usos específicos.
