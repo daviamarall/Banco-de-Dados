@@ -1014,3 +1014,11 @@ Para extrair o **AWR (Automatic Workload Repository)** usando o **Oracle SQL Dev
 
 A análise adequada do relatório AWR vai ajudar a identificar áreas problemáticas no banco de dados e fornecer informações sobre como otimizar o desempenho, ajustando consultas, índices e a configuração do banco de dados.
 
+---
+
+### **Link Repositório**
+https://github.com/daviamarall/bd/blob/main/Objetivo/Documento.md
+
+
+
+
