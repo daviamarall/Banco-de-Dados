@@ -67,14 +67,14 @@ As consultas em T-SQL podem incluir cláusulas como `WHERE`, `JOIN`, `GROUP BY`,
 
 A cláusula **`WHERE`** é utilizada para filtrar os registros retornados por uma consulta SQL. Ela define uma condição que os dados devem atender para serem incluídos no resultado final da consulta. Apenas as linhas que correspondem aos critérios especificados na cláusula **`WHERE`** serão retornadas.
 
-### **Sintaxe da Cláusula `WHERE`**:
+#### **Sintaxe da Cláusula `WHERE`**:
 ```sql
 SELECT coluna1, coluna2, ...
 FROM tabela
 WHERE condição;
 ```
 
-### **Exemplo Básico de `WHERE`**:
+#### **Exemplo Básico de `WHERE`**:
 A consulta abaixo seleciona todos os produtos cujo preço é maior que 1000:
 ```sql
 SELECT Nome, Preco
@@ -83,7 +83,7 @@ WHERE Preco > 1000;
 ```
 - **Explicação**: Esta consulta retorna apenas os produtos cujo preço seja superior a 1000.
 
-### **Operadores Comuns Usados com `WHERE`**:
+#### **Operadores Comuns Usados com `WHERE`**:
 A cláusula **`WHERE`** pode ser combinada com vários operadores e funções, como:
 
 #### **Operadores de Comparação**:
@@ -210,7 +210,7 @@ HAVING COUNT(*) > 10;
 ```
 - **Explicação**: A cláusula **`HAVING`** filtra os grupos de categorias que têm mais de 10 produtos.
 
-### **GROUP BY**
+#### **GROUP BY**
    - **Descrição**: A cláusula **`GROUP BY`** é usada para agrupar linhas que compartilham um valor em comum em uma ou mais colunas. Geralmente, é usada em conjunto com funções agregadas, como **`SUM()`**, **`COUNT()`**, **`AVG()`**, **`MAX()`** e **`MIN()`**, para realizar cálculos em cada grupo de dados.
    - **Sintaxe**:
      ```sql
@@ -230,7 +230,7 @@ HAVING COUNT(*) > 10;
 
    - **Observação**: Todas as colunas na cláusula `SELECT` que não fazem parte de uma função agregada devem aparecer na cláusula `GROUP BY`.
 
-### **ORDER BY**
+#### **ORDER BY**
    - **Descrição**: A cláusula **`ORDER BY`** é usada para ordenar os resultados de uma consulta com base em uma ou mais colunas. Por padrão, os resultados são ordenados em ordem crescente, mas você pode especificar explicitamente a ordem crescente ou decrescente.
    - **Sintaxe**:
      ```sql
@@ -263,11 +263,11 @@ HAVING COUNT(*) > 10;
      ```
      Neste exemplo, a lista de produtos será ordenada primeiro pela categoria (em ordem crescente) e, dentro de cada categoria, pelos preços (em ordem decrescente).
 
-### Diferença entre `GROUP BY` e `ORDER BY`:
+#### Diferença entre `GROUP BY` e `ORDER BY`:
 - **`GROUP BY`** agrupa os resultados com base em uma ou mais colunas, frequentemente usado com funções agregadas (soma, contagem, etc.).
 - **`ORDER BY`** apenas ordena o resultado, sem alterar a quantidade de linhas retornadas ou fazer cálculos.
 
-### Exemplo Combinado: `GROUP BY` com `ORDER BY`
+#### Exemplo Combinado: `GROUP BY` com `ORDER BY`
 Você pode combinar **`GROUP BY`** e **`ORDER BY`** em uma mesma consulta. Por exemplo, para obter o total de vendas por cliente e ordenar pelo maior total de vendas:
 ```sql
 SELECT ClienteID, SUM(ValorPedido) AS TotalVendas
@@ -279,7 +279,7 @@ Neste caso, o **`GROUP BY`** agrupa as vendas por cliente, e o **`ORDER BY`** or
 
 Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas com base em uma condição relacionada. Existem diferentes tipos de JOINs, cada um com comportamentos distintos ao combinar os dados. Aqui estão os principais tipos de JOINs em SQL:
 
-### **INNER JOIN**
+#### **INNER JOIN**
    - **Descrição**: Retorna apenas as linhas que têm correspondências nas duas tabelas. Se não houver correspondência, a linha é excluída do resultado.
    - **Sintaxe**:
      ```sql
@@ -291,7 +291,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Esse exemplo combina dados de **Clientes**, **Pedidos**, e **Produtos**, mas só retorna os registros em que há uma correspondência nas três tabelas.
 
-### **LEFT JOIN (ou LEFT OUTER JOIN)**
+#### **LEFT JOIN (ou LEFT OUTER JOIN)**
    - **Descrição**: Retorna todas as linhas da tabela à esquerda (primeira tabela) e as linhas correspondentes da tabela à direita. Se não houver correspondência na tabela à direita, serão retornados `NULLs` nos campos da tabela da direita.
    - **Sintaxe**:
      ```sql
@@ -303,7 +303,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Retorna todos os clientes, mesmo que eles não tenham feito pedidos. Se não houver pedido ou produto associado a um cliente, o SQL preenche as colunas de **Pedidos** e **Produtos** com valores `NULL`.
 
-### **RIGHT JOIN (ou RIGHT OUTER JOIN)**
+#### **RIGHT JOIN (ou RIGHT OUTER JOIN)**
    - **Descrição**: O comportamento é o oposto do **LEFT JOIN**. Retorna todas as linhas da tabela à direita (segunda tabela) e as linhas correspondentes da tabela à esquerda. Se não houver correspondência na tabela à esquerda, serão retornados `NULLs` nos campos da tabela da esquerda.
    - **Sintaxe**:
      ```sql
@@ -315,7 +315,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retornaria todos os produtos, mesmo que não estejam associados a nenhum pedido ou cliente. Se um produto não tiver sido encomendado, os campos da tabela **Clientes** e **Pedidos** serão preenchidos com `NULL`.
 
-### **FULL JOIN (ou FULL OUTER JOIN)**
+#### **FULL JOIN (ou FULL OUTER JOIN)**
    - **Descrição**: Retorna todas as linhas quando há uma correspondência em qualquer uma das tabelas. Se não houver correspondência em ambas as tabelas, as colunas da tabela correspondente que não tiver valores serão preenchidas com `NULL`.
    - **Sintaxe**:
      ```sql
@@ -327,7 +327,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Isso retorna todos os clientes, todos os pedidos e todos os produtos, independentemente de haver ou não correspondências entre eles. Se não houver correspondência, os valores `NULL` serão usados para preencher as colunas ausentes.
 
-### **CROSS JOIN**
+#### **CROSS JOIN**
    - **Descrição**: Combina cada linha de uma tabela com todas as linhas de outra tabela, resultando em um produto cartesiano (todas as combinações possíveis). Não exige uma condição `ON`.
    - **Sintaxe**:
      ```sql
@@ -349,7 +349,7 @@ Em SQL, os **JOINs** são usados para combinar registros de duas ou mais tabelas
 
    - **Explicação**: Aqui, a tabela **Funcionarios** é associada a si mesma para identificar funcionários e seus respectivos gerentes.
 
-### Resumo:
+#### Resumo:
 | Tipo de Join    | Descrição |
 |-----------------|-----------|
 | **INNER JOIN**  | Retorna apenas as linhas que têm correspondência em ambas as tabelas. |
@@ -380,7 +380,7 @@ FROM Produtos;
 Subconsultas são consultas aninhadas dentro de outra consulta. Elas podem ser usadas para fornecer valores ou realizar filtros mais complexos.
 Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra consulta principal. Elas permitem que você recupere dados com base em um resultado intermediário, fornecido pela subconsulta. Existem vários tipos de subconsultas, e aqui estão alguns exemplos de uso comum:
 
-### ** Subconsulta Simples em `WHERE`**
+#### **Subconsulta Simples em `WHERE`**
    Uma subconsulta pode ser usada dentro de uma cláusula **`WHERE`** para filtrar resultados com base em uma outra consulta.
 
    **Exemplo**: Obter os nomes de clientes que fizeram pedidos cujo valor total é maior que R$ 1000.
@@ -395,7 +395,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta seleciona os **`ClienteID`** que têm pedidos com valor maior que 1000. A consulta externa, então, retorna os nomes desses clientes.
 
-### **Subconsulta em `FROM`**
+#### **Subconsulta em `FROM`**
    Subconsultas podem ser usadas dentro da cláusula **`FROM`**, funcionando como uma "tabela temporária".
 
    **Exemplo**: Obter o total de pedidos e a soma dos valores para cada cliente.
@@ -410,7 +410,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta agrega os dados de pedidos (total de pedidos e soma dos valores) e a consulta externa combina esses dados com a tabela **Clientes**.
 
-### **Subconsulta com Operador `EXISTS`**
+#### **Subconsulta com Operador `EXISTS`**
    O operador **`EXISTS`** é usado para verificar se uma subconsulta retorna alguma linha. Ele retorna `TRUE` se pelo menos uma linha for encontrada.
 
    **Exemplo**: Selecionar os clientes que fizeram pelo menos um pedido.
@@ -425,7 +425,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta verifica se existe algum pedido associado a cada cliente. Se existir, o cliente é retornado na consulta externa.
 
-### ** Subconsulta em `SELECT`**
+#### **Subconsulta em `SELECT`**
    Subconsultas podem ser utilizadas diretamente na cláusula **`SELECT`** para calcular valores de forma independente para cada linha.
 
    **Exemplo**: Obter o nome dos clientes e o valor total de seus pedidos.
@@ -438,7 +438,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta no **`SELECT`** calcula a soma do valor dos pedidos para cada cliente individualmente.
 
-### **Subconsulta com Operador `ALL`**
+#### **Subconsulta com Operador `ALL`**
    O operador **`ALL`** é utilizado para comparar um valor com todos os resultados de uma subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de todos os produtos da categoria "Eletrônicos".
@@ -453,7 +453,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços de todos os produtos da categoria "Eletrônicos", e a consulta externa seleciona apenas os produtos que têm um preço maior do que qualquer um desses valores.
 
-### **Subconsulta com Operador `ANY`**
+#### **Subconsulta com Operador `ANY`**
    O operador **`ANY`** é usado para comparar um valor com qualquer um dos resultados da subconsulta.
 
    **Exemplo**: Selecionar produtos cujo preço seja maior que o preço de algum produto da categoria "Eletrônicos".
@@ -468,7 +468,7 @@ Subconsultas (ou subqueries) em SQL são consultas aninhadas dentro de outra con
    ```
    - **Explicação**: A subconsulta retorna os preços dos produtos da categoria "Eletrônicos", e a consulta externa seleciona qualquer produto que tenha um preço maior que pelo menos um desses valores.
 
-### ** Subconsulta Correlacionada**
+#### ** Subconsulta Correlacionada**
    Uma subconsulta é considerada **correlacionada** quando depende da consulta externa, ou seja, ela é executada repetidamente para cada linha retornada pela consulta externa.
 
    **Exemplo**: Obter os nomes dos produtos cujo preço é maior que a média de todos os produtos da mesma categoria.
@@ -1008,7 +1008,7 @@ Para extrair o **AWR (Automatic Workload Repository)** usando o **Oracle SQL Dev
    - **Analisar SQL Problemáticas**: Otimize consultas SQL problemáticas ou com alta carga.
    - **Ajuste de Parâmetros**: Ajuste parâmetros de inicialização como tamanho de memória (SGA, PGA) com base nas informações de eficiência e eventos de espera.
 
-### **Ferramentas Auxiliares**
+#### **Ferramentas Auxiliares**
    - **AWR Baselines**: Crie baselines AWR para comparar períodos de desempenho "normal" com períodos de problemas.
    - **Oracle Enterprise Manager (OEM)**: Ferramenta gráfica que oferece relatórios AWR diretamente na interface, facilitando a visualização e análise.
 
